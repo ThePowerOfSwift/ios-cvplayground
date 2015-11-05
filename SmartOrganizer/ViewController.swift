@@ -14,6 +14,10 @@ class ViewController: UIViewController {
 
 	// MARK: - ViewController
 
+	/*
+	 * stillImageSource --> cornerFilter ==> crosshairGenerator --> blendFilter
+	 *                  --> gammaFilter -------------------------->
+	 */
 	func cornersForImage(inputImage: UIImage) {
 		guard let photoView = photoView else {
 			return
