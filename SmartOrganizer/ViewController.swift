@@ -35,7 +35,7 @@ class ViewController: UIViewController {
 		crosshairGenerator.addTarget(blendFilter)
 
 		let cornerFilter = GPUImageHarrisCornerDetectionFilter()
-		cornerFilter.threshold = 0.15
+		cornerFilter.threshold = 0.06
 		cornerFilter.forceProcessingAtSize(photoView.bounds.size)
 		cornerFilter.cornersDetectedBlock = { (cornersArray, numberOfCorners, frameTime) in
 			print("Got \(numberOfCorners) corner(s)")
@@ -64,12 +64,12 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		photoView?.backgroundColor = UIColor.cyanColor()
-		photoView?.image = UIImage(named: "test2")
+		photoView?.image = UIImage(named: "test3")
 	}
 
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		cornersForImage(UIImage(named: "test2")!)
+		cornersForImage(UIImage(named: "test3")!)
 	}
 
 	override func didReceiveMemoryWarning() {
