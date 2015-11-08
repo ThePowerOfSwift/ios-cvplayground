@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4369A8A71BEDDD0F000C8EFD /* GPUCameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369A8A61BEDDD0F000C8EFD /* GPUCameraController.swift */; };
+		4369A8A91BEE3659000C8EFD /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369A8A81BEE3659000C8EFD /* HomeController.swift */; };
+		4369A8AB1BEE37F0000C8EFD /* CIDetectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369A8AA1BEE37F0000C8EFD /* CIDetectorController.swift */; };
 		43B26C4E1BEBAEE500804460 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B26C4D1BEBAEE500804460 /* AppDelegate.swift */; };
-		43B26C501BEBAEE500804460 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B26C4F1BEBAEE500804460 /* ViewController.swift */; };
+		43B26C501BEBAEE500804460 /* GPUController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B26C4F1BEBAEE500804460 /* GPUController.swift */; };
 		43B26C531BEBAEE500804460 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B26C511BEBAEE500804460 /* Main.storyboard */; };
 		43B26C551BEBAEE500804460 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B26C541BEBAEE500804460 /* Assets.xcassets */; };
 		43B26C581BEBAEE500804460 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B26C561BEBAEE500804460 /* LaunchScreen.storyboard */; };
@@ -17,9 +20,12 @@
 
 /* Begin PBXFileReference section */
 		302415F952E70450653332DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4369A8A61BEDDD0F000C8EFD /* GPUCameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPUCameraController.swift; sourceTree = "<group>"; };
+		4369A8A81BEE3659000C8EFD /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		4369A8AA1BEE37F0000C8EFD /* CIDetectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIDetectorController.swift; sourceTree = "<group>"; };
 		43B26C4A1BEBAEE500804460 /* SmartOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B26C4D1BEBAEE500804460 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		43B26C4F1BEBAEE500804460 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		43B26C4F1BEBAEE500804460 /* GPUController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUController.swift; sourceTree = "<group>"; };
 		43B26C521BEBAEE500804460 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43B26C541BEBAEE500804460 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43B26C571BEBAEE500804460 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,11 +86,14 @@
 			isa = PBXGroup;
 			children = (
 				43B26C4D1BEBAEE500804460 /* AppDelegate.swift */,
-				43B26C4F1BEBAEE500804460 /* ViewController.swift */,
-				43B26C511BEBAEE500804460 /* Main.storyboard */,
 				43B26C541BEBAEE500804460 /* Assets.xcassets */,
-				43B26C561BEBAEE500804460 /* LaunchScreen.storyboard */,
+				4369A8AA1BEE37F0000C8EFD /* CIDetectorController.swift */,
+				4369A8A61BEDDD0F000C8EFD /* GPUCameraController.swift */,
+				43B26C4F1BEBAEE500804460 /* GPUController.swift */,
+				4369A8A81BEE3659000C8EFD /* HomeController.swift */,
 				43B26C591BEBAEE500804460 /* Info.plist */,
+				43B26C561BEBAEE500804460 /* LaunchScreen.storyboard */,
+				43B26C511BEBAEE500804460 /* Main.storyboard */,
 				43B26C5F1BEBB04400804460 /* SmartOrganizer-Bridging-Header.h */,
 			);
 			path = SmartOrganizer;
@@ -212,8 +221,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43B26C501BEBAEE500804460 /* ViewController.swift in Sources */,
+				4369A8A91BEE3659000C8EFD /* HomeController.swift in Sources */,
+				4369A8A71BEDDD0F000C8EFD /* GPUCameraController.swift in Sources */,
+				43B26C501BEBAEE500804460 /* GPUController.swift in Sources */,
 				43B26C4E1BEBAEE500804460 /* AppDelegate.swift in Sources */,
+				4369A8AB1BEE37F0000C8EFD /* CIDetectorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
