@@ -42,6 +42,14 @@
                                     <segue destination="94N-A3-VES" kind="presentation" id="JXD-Uy-MWT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxO-Kr-Z3J">
+                                <rect key="frame" x="271" y="361" width="58" height="30"/>
+                                <animations/>
+                                <state key="normal" title="OpenCV"/>
+                                <connections>
+                                    <segue destination="R53-1R-WN1" kind="presentation" id="K1E-aj-hWv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,6 +58,8 @@
                             <constraint firstItem="HE5-IO-Ptu" firstAttribute="top" secondItem="qcQ-lL-M60" secondAttribute="bottom" constant="8" symbolic="YES" id="5nK-MH-2bk"/>
                             <constraint firstItem="HE5-IO-Ptu" firstAttribute="centerX" secondItem="7nZ-2O-Ro4" secondAttribute="centerX" id="OXP-LQ-1ED"/>
                             <constraint firstItem="HE5-IO-Ptu" firstAttribute="centerY" secondItem="7nZ-2O-Ro4" secondAttribute="centerY" id="YcF-xD-Dfk"/>
+                            <constraint firstItem="nxO-Kr-Z3J" firstAttribute="top" secondItem="teQ-yO-QNB" secondAttribute="bottom" constant="8" symbolic="YES" id="hIJ-M6-1fh"/>
+                            <constraint firstItem="nxO-Kr-Z3J" firstAttribute="centerX" secondItem="teQ-yO-QNB" secondAttribute="centerX" id="iYf-er-UjK"/>
                             <constraint firstItem="qcQ-lL-M60" firstAttribute="centerX" secondItem="HE5-IO-Ptu" secondAttribute="centerX" id="iql-c1-q2A"/>
                             <constraint firstItem="teQ-yO-QNB" firstAttribute="centerX" secondItem="HE5-IO-Ptu" secondAttribute="centerX" id="mXF-ih-Q7Z"/>
                         </constraints>
@@ -127,6 +137,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Om-jj-p68" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="401" y="405"/>
+        </scene>
+        <!--OpenCV Controller-->
+        <scene sceneID="2wq-oL-vf4">
+            <objects>
+                <viewController id="R53-1R-WN1" customClass="OpenCVController" customModule="SmartOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HW4-6s-FRd"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mjp-x5-uIX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ODu-5x-Oa2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SZm-ro-Ps0">
+                                <rect key="frame" x="20" y="28" width="560" height="552"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="SZm-ro-Ps0" secondAttribute="bottom" constant="20" symbolic="YES" id="A5i-HI-aXX"/>
+                            <constraint firstItem="SZm-ro-Ps0" firstAttribute="leading" secondItem="ODu-5x-Oa2" secondAttribute="leadingMargin" id="ABS-uc-lh5"/>
+                            <constraint firstItem="SZm-ro-Ps0" firstAttribute="top" secondItem="HW4-6s-FRd" secondAttribute="bottom" constant="8" symbolic="YES" id="lRR-zn-R7U"/>
+                            <constraint firstItem="SZm-ro-Ps0" firstAttribute="trailing" secondItem="ODu-5x-Oa2" secondAttribute="trailingMargin" id="nxO-4N-xcY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="SZm-ro-Ps0" id="V7x-oP-Dxu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PpO-vg-Qrl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-442" y="1193"/>
         </scene>
         <!--Detector Controller-->
         <scene sceneID="7TA-JX-ja1">

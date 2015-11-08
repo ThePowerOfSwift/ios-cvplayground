@@ -3,3 +3,5 @@
 //
 
 #import <GPUImage/GPUImage.h>
+
+#import "OpenCVWrapper.h"
