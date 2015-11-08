@@ -10,6 +10,8 @@
 		4369A8A71BEDDD0F000C8EFD /* GPUCameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369A8A61BEDDD0F000C8EFD /* GPUCameraController.swift */; };
 		4369A8A91BEE3659000C8EFD /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369A8A81BEE3659000C8EFD /* HomeController.swift */; };
 		4369A8AB1BEE37F0000C8EFD /* CIDetectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369A8AA1BEE37F0000C8EFD /* CIDetectorController.swift */; };
+		4382C5D31BEFB66E000D4C58 /* CIDetectorControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382C5D21BEFB66E000D4C58 /* CIDetectorControllerTests.swift */; };
+		4382C5DA1BEFB6D3000D4C58 /* CIDetectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369A8AA1BEE37F0000C8EFD /* CIDetectorController.swift */; };
 		43B26C4E1BEBAEE500804460 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B26C4D1BEBAEE500804460 /* AppDelegate.swift */; };
 		43B26C501BEBAEE500804460 /* GPUController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B26C4F1BEBAEE500804460 /* GPUController.swift */; };
 		43B26C531BEBAEE500804460 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B26C511BEBAEE500804460 /* Main.storyboard */; };
@@ -18,11 +20,24 @@
 		61AEC604DE0B99A2C36D412F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 302415F952E70450653332DA /* libPods.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4382C5D51BEFB66E000D4C58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43B26C421BEBAEE500804460 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43B26C491BEBAEE500804460;
+			remoteInfo = SmartOrganizer;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		302415F952E70450653332DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4369A8A61BEDDD0F000C8EFD /* GPUCameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPUCameraController.swift; sourceTree = "<group>"; };
 		4369A8A81BEE3659000C8EFD /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		4369A8AA1BEE37F0000C8EFD /* CIDetectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIDetectorController.swift; sourceTree = "<group>"; };
+		4382C5D01BEFB66D000D4C58 /* SmartOrganizerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartOrganizerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4382C5D21BEFB66E000D4C58 /* CIDetectorControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDetectorControllerTests.swift; sourceTree = "<group>"; };
+		4382C5D41BEFB66E000D4C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43B26C4A1BEBAEE500804460 /* SmartOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B26C4D1BEBAEE500804460 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43B26C4F1BEBAEE500804460 /* GPUController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUController.swift; sourceTree = "<group>"; };
@@ -36,6 +51,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4382C5CD1BEFB66D000D4C58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		43B26C471BEBAEE500804460 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,10 +86,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4382C5D11BEFB66E000D4C58 /* SmartOrganizerTests */ = {
+			isa = PBXGroup;
+			children = (
+				4382C5D21BEFB66E000D4C58 /* CIDetectorControllerTests.swift */,
+				4382C5D41BEFB66E000D4C58 /* Info.plist */,
+			);
+			path = SmartOrganizerTests;
+			sourceTree = "<group>";
+		};
 		43B26C411BEBAEE500804460 = {
 			isa = PBXGroup;
 			children = (
 				43B26C4C1BEBAEE500804460 /* SmartOrganizer */,
+				4382C5D11BEFB66E000D4C58 /* SmartOrganizerTests */,
 				43B26C4B1BEBAEE500804460 /* Products */,
 				123855813435D6C6A8A29471 /* Pods */,
 				3FB076D64E7F9FF9A7C426AE /* Frameworks */,
@@ -78,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				43B26C4A1BEBAEE500804460 /* SmartOrganizer.app */,
+				4382C5D01BEFB66D000D4C58 /* SmartOrganizerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,6 +135,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4382C5CF1BEFB66D000D4C58 /* SmartOrganizerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4382C5D71BEFB66E000D4C58 /* Build configuration list for PBXNativeTarget "SmartOrganizerTests" */;
+			buildPhases = (
+				4382C5CC1BEFB66D000D4C58 /* Sources */,
+				4382C5CD1BEFB66D000D4C58 /* Frameworks */,
+				4382C5CE1BEFB66D000D4C58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4382C5D61BEFB66E000D4C58 /* PBXTargetDependency */,
+			);
+			name = SmartOrganizerTests;
+			productName = SmartOrganizerTests;
+			productReference = 4382C5D01BEFB66D000D4C58 /* SmartOrganizerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		43B26C491BEBAEE500804460 /* SmartOrganizer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43B26C5C1BEBAEE500804460 /* Build configuration list for PBXNativeTarget "SmartOrganizer" */;
@@ -132,6 +183,10 @@
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = AuthorWise;
 				TargetAttributes = {
+					4382C5CF1BEFB66D000D4C58 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 43B26C491BEBAEE500804460;
+					};
 					43B26C491BEBAEE500804460 = {
 						CreatedOnToolsVersion = 7.1;
 					};
@@ -151,11 +206,19 @@
 			projectRoot = "";
 			targets = (
 				43B26C491BEBAEE500804460 /* SmartOrganizer */,
+				4382C5CF1BEFB66D000D4C58 /* SmartOrganizerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4382C5CE1BEFB66D000D4C58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		43B26C481BEBAEE500804460 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -217,6 +280,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4382C5CC1BEFB66D000D4C58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4382C5D31BEFB66E000D4C58 /* CIDetectorControllerTests.swift in Sources */,
+				4382C5DA1BEFB6D3000D4C58 /* CIDetectorController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		43B26C461BEBAEE500804460 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -230,6 +302,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4382C5D61BEFB66E000D4C58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43B26C491BEBAEE500804460 /* SmartOrganizer */;
+			targetProxy = 4382C5D51BEFB66E000D4C58 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		43B26C511BEBAEE500804460 /* Main.storyboard */ = {
@@ -251,6 +331,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4382C5D81BEFB66E000D4C58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SmartOrganizerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = authorwise.SmartOrganizerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartOrganizer.app/SmartOrganizer";
+			};
+			name = Debug;
+		};
+		4382C5D91BEFB66E000D4C58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SmartOrganizerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = authorwise.SmartOrganizerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartOrganizer.app/SmartOrganizer";
+			};
+			name = Release;
+		};
 		43B26C5A1BEBAEE500804460 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -340,6 +444,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SmartOrganizer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = authorwise.SmartOrganizer;
@@ -355,6 +463,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SmartOrganizer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = authorwise.SmartOrganizer;
@@ -366,6 +478,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4382C5D71BEFB66E000D4C58 /* Build configuration list for PBXNativeTarget "SmartOrganizerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4382C5D81BEFB66E000D4C58 /* Debug */,
+				4382C5D91BEFB66E000D4C58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		43B26C451BEBAEE500804460 /* Build configuration list for PBXProject "SmartOrganizer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
