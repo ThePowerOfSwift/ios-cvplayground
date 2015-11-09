@@ -17,17 +17,23 @@ class OpenCVController: UIViewController {
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 
-		guard let image = UIImage(named: "test4") else {
+		guard let image = UIImage(named: "test5") else {
 			print("Could not load image")
 			return
 		}
 
 		let mat = OpenCVWrapper.matWithImage(image)
-		let corners = OpenCVWrapper.findBiggestContour(mat, size: 4)
-		imageView?.image = OpenCVWrapper.highlightCorners(image, corners: corners)
 
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3*Int64(NSEC_PER_SEC)), dispatch_get_main_queue()) {
-			self.imageView?.image = OpenCVWrapper.warpPerspective(mat, corners: corners)
-		}
+		//let corners = OpenCVWrapper.findBiggestContour(mat, size: 4)
+		//imageView?.image = OpenCVWrapper.highlightCorners(image, corners: corners)
+
+		//imageView?.image = OpenCVWrapper.warpPerspective(mat, corners: corners)
+
+		let rectangles = OpenCVWrapper.findRectanglesEx(mat, aspectRatio: 1) as! [[AnyObject]]
+		imageView?.image = OpenCVWrapper.highlightRectangles(image, corners: rectangles)
+
+		//imageView?.image = OpenCVWrapper.test(image)
+
+		//imageView?.image = OpenCVWrapper.imageRectangles(mat, aspectRatio: 1)
 	}
 }
