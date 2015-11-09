@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QEH-LA-ATH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HL3-1Z-EJ2">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="7lc-TJ-s3H">
+            <objects>
+                <navigationController id="HL3-1Z-EJ2" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dow-uv-LES">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="QEH-LA-ATH" kind="relationship" relationship="rootViewController" id="Oyj-Ka-DCk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vh5-cD-gcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1149" y="387"/>
+        </scene>
         <!--Home Controller-->
         <scene sceneID="nAc-s3-f9F">
             <objects>
@@ -23,7 +40,7 @@
                                 <animations/>
                                 <state key="normal" title="Camera GPUImage"/>
                                 <connections>
-                                    <segue destination="GUa-KT-eDM" kind="presentation" id="9qS-Wu-0k5"/>
+                                    <segue destination="GUa-KT-eDM" kind="show" id="86Y-UT-6Xo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcQ-lL-M60">
@@ -31,7 +48,7 @@
                                 <animations/>
                                 <state key="normal" title="GPUImage"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="knP-up-NFU"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="ILP-no-Oup"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teQ-yO-QNB">
@@ -39,7 +56,7 @@
                                 <animations/>
                                 <state key="normal" title="CIDetector"/>
                                 <connections>
-                                    <segue destination="94N-A3-VES" kind="presentation" id="JXD-Uy-MWT"/>
+                                    <segue destination="94N-A3-VES" kind="show" id="CSk-x2-LUy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxO-Kr-Z3J">
@@ -47,7 +64,7 @@
                                 <animations/>
                                 <state key="normal" title="OpenCV"/>
                                 <connections>
-                                    <segue destination="R53-1R-WN1" kind="presentation" id="K1E-aj-hWv"/>
+                                    <segue destination="R53-1R-WN1" kind="show" id="hB0-37-bjD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -64,6 +81,7 @@
                             <constraint firstItem="teQ-yO-QNB" firstAttribute="centerX" secondItem="HE5-IO-Ptu" secondAttribute="centerX" id="mXF-ih-Q7Z"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="llE-CL-zka"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nr9-g0-KUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

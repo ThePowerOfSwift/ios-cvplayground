@@ -13,16 +13,37 @@
 #import "OpenCVWrapper.h"
 
 
+@interface OpenCVMat (Private)
+@property (nonatomic) cv::Mat *mat;
+@end
+
+@implementation OpenCVMat { cv::Mat *_mat; }
+- (cv::Mat *)mat { return self->_mat; }
+- (void)setMat:(cv::Mat *)mat { self->_mat = mat; }
+- (void)dealloc {
+	if (self.mat != nil) {
+		self.mat->release();
+	}
+}
+@end
+
 @implementation OpenCVWrapper
 
-+ (UIImage *) drawOverlay:(UIImage *)image {
-	cv::Mat src = [image CVMat];
-	if (src.empty()) {
++ (OpenCVMat *)matWithImage:(UIImage *)image {
+	cv::Mat cvMat = [image CVMat];
+	if (cvMat.empty()) {
+		std::cout << "Input image is invalid!" << std::endl;
 		return nil;
 	}
 
+	OpenCVMat *mat = [[OpenCVMat alloc] init];
+	mat.mat = new cv::Mat(cvMat);
+	return mat;
+}
+
++ (NSArray *)findBiggestContour:(OpenCVMat *)src size:(NSInteger)size {
 	cv::Mat bw;
-	cv::cvtColor(src, bw, CV_BGR2GRAY);
+	cv::cvtColor(*src.mat, bw, CV_BGR2GRAY);
 	cv::threshold(bw, bw, 128, 255, CV_THRESH_BINARY);
 
 	std::vector<std::vector<cv::Point> > contours;
@@ -36,41 +57,56 @@
 			double peri = cv::arcLength(contours[i], true);
 			std::vector<cv::Point> approx;
 			cv::approxPolyDP(contours[i], approx, 0.02*peri, true);
-			if (area > maxArea && approx.size() == 4) {
+			if (area > maxArea && approx.size() == size) {
 				biggest = std::vector<cv::Point>(approx);
 				maxArea = area;
 			}
 		}
 	}
 
-	cv::Mat dst(src.size(), CV_8UC3, cv::Scalar(0, 0, 0));
-
-	cv::Scalar colors[3];
-	colors[0] = cv::Scalar(255, 0, 0);
-	colors[1] = cv::Scalar(0, 255, 0);
-	colors[2] = cv::Scalar(0, 0, 255);
-
-	for (int i = 0; i < contours.size(); i++) {
-		cv::drawContours(dst, contours, i, colors[i % 3]);
-	}
-
-	if (biggest.size() != 4) {
-		std::cout << "The object is not quadrilateral! " << std::endl;
+	if (biggest.size() != size) {
+		std::cout << "No object found!" << std::endl;
 		return nil;
 	}
 
-	cv::circle(dst, biggest[0], 3, CV_RGB(255,0,0), 2);
-	cv::circle(dst, biggest[1], 3, CV_RGB(0,255,0), 2);
-	cv::circle(dst, biggest[2], 3, CV_RGB(0,0,255), 2);
-	cv::circle(dst, biggest[3], 3, CV_RGB(255,255,255), 2);
+	NSMutableArray *result = [[NSMutableArray alloc] init];
+	for (int i = 0; i < biggest.size(); i++) {
+		[result addObject:[NSValue valueWithCGPoint:CGPointMake(biggest[i].x, biggest[i].y)]];
+	}
+
+	return result;
+}
+
++ (UIImage *)highlightCorners:(UIImage *)image corners:(NSArray *)corners {
+	cv::Mat src = [image CVMat];
+	if (src.empty()) {
+		std::cout << "Input image is invalid!" << std::endl;
+		return nil;
+	}
+
+	CGFloat offset = 0;
+	CGFloat step = 1.0 / [corners count];
+	for (int i = 0; i < [corners count]; i++) {
+		NSValue *corner = [corners objectAtIndex:i];
+		CGPoint point = [corner CGPointValue];
+		CGFloat r, g, b;
+		[[UIColor colorWithHue:offset saturation:1 brightness:1 alpha:1] getRed:&r green:&g blue:&b alpha:nil];
+		cv::circle(src, cv::Point(point.x, point.y), 3, CV_RGB(r*255,g*255,b*255), 2);
+		offset += step;
+	}
+
+	return [UIImage imageWithCVMat:src];
+}
+
++ (UIImage *)warpPerspective:(OpenCVMat *)src corners:(NSArray *)corners {
+	std::vector<cv::Point2f> corners2f;
+	for (int i = 0; i < [corners count]; i++) {
+		NSValue *corner = [corners objectAtIndex:i];
+		CGPoint point = [corner CGPointValue];
+		corners2f.push_back(cv::Point2f(point.x, point.y));
+	}
 
 	cv::Mat quad = cv::Mat::zeros(300, 220, CV_8UC3);
-
-	std::vector<cv::Point2f> biggest2f;
-	biggest2f.push_back(cv::Point2f(biggest[0].x, biggest[0].y));
-	biggest2f.push_back(cv::Point2f(biggest[1].x, biggest[1].y));
-	biggest2f.push_back(cv::Point2f(biggest[2].x, biggest[2].y));
-	biggest2f.push_back(cv::Point2f(biggest[3].x, biggest[3].y));
 
 	std::vector<cv::Point2f> quad_pts;
 	quad_pts.push_back(cv::Point2f(0, 0));
@@ -78,8 +114,8 @@
 	quad_pts.push_back(cv::Point2f(quad.cols, quad.rows));
 	quad_pts.push_back(cv::Point2f(0, quad.rows));
 
-	cv::Mat transmtx = cv::getPerspectiveTransform(biggest2f, quad_pts);
-	cv::warpPerspective(src, quad, transmtx, quad.size());
+	cv::Mat transmtx = cv::getPerspectiveTransform(corners2f, quad_pts);
+	cv::warpPerspective(*src.mat, quad, transmtx, quad.size());
 
 	return [UIImage imageWithCVMat:quad];
 }

@@ -22,6 +22,12 @@ class OpenCVController: UIViewController {
 			return
 		}
 
-		imageView?.image = OpenCVWrapper.drawOverlay(image)
+		let mat = OpenCVWrapper.matWithImage(image)
+		let corners = OpenCVWrapper.findBiggestContour(mat, size: 4)
+		imageView?.image = OpenCVWrapper.highlightCorners(image, corners: corners)
+
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3*Int64(NSEC_PER_SEC)), dispatch_get_main_queue()) {
+			self.imageView?.image = OpenCVWrapper.warpPerspective(mat, corners: corners)
+		}
 	}
 }

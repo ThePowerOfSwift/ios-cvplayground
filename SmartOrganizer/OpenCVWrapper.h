@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OpenCVWrapper : NSObject
+@interface OpenCVMat: NSObject
+@end
 
-+ (UIImage *) drawOverlay:(UIImage *)image;
+@interface OpenCVWrapper: NSObject
+
++ (OpenCVMat *)matWithImage:(UIImage *)image;
++ (NSArray *)findBiggestContour:(OpenCVMat *)src size:(NSInteger)size; // return [NSValue<CGPoint>] clock-wise order
++ (UIImage *)highlightCorners:(UIImage *)image corners:(NSArray *)corners;
++ (UIImage *)warpPerspective:(OpenCVMat *)src corners:(NSArray *)corners;
 
 @end
