@@ -1,12 +1,13 @@
 //
-//  HomeController.swift
+//  AWCameraCtrl.swift
 //  SmartOrganizer
 //
-//  Created by iwat on 11/7/15.
+//  Created by iwat on 11/10/15.
 //  Copyright © 2015 AuthorWise. All rights reserved.
 //
 
 import UIKit
 
-class HomeController: UIViewController {
+class AWCameraCtrl: UIViewController {
+
 }

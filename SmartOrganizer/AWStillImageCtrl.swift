@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OpenCVController: UIViewController {
+class AWStillImageCtrl: UIViewController {
 
 	@IBOutlet weak var imageView: UIImageView?
 
