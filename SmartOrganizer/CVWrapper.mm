@@ -94,13 +94,15 @@ using namespace cv;
 	cvtColor(srcMat, bw, CV_BGR2GRAY);
 	threshold(bw, bw, 128, 255, CV_THRESH_BINARY);
 
-	vector<vector<cv::Point> > contours;
+	vector<vector<cv::Point>> contours;
 	findContours(bw, contours, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE);
 
+	vector<vector<cv::Point>> chosen;
 	double maxArea = 0;
 	for (vector<vector<cv::Point>>::iterator it = contours.begin(); it != contours.end(); it++) {
 		double area = contourArea(*it);
-		if (area > 100) {
+		if (area > 500) {
+			chosen.push_back(*it);
 			double peri = arcLength(*it, true);
 			vector<cv::Point> approx;
 			approxPolyDP(*it, approx, 0.02*peri, true);
@@ -112,6 +114,7 @@ using namespace cv;
 			}
 		}
 	}
+	drawContours(srcMat, chosen, -1, Scalar(255, 0, 0));
 }
 
 /*
@@ -126,7 +129,7 @@ using namespace cv;
 	threshold(bw, bw, 128, 255, CV_THRESH_BINARY);
 	bitwise_not(bw, bw);
 
-	vector<vector<cv::Point> > contours;
+	vector<vector<cv::Point>> contours;
 	findContours(bw, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE);
 
 	for (vector<vector<cv::Point>>::iterator it = contours.begin(); it != contours.end(); it++) {
@@ -151,7 +154,7 @@ using namespace cv;
 	threshold(bw, bw, 128, 255, CV_THRESH_BINARY);
 	bitwise_not(bw, bw);
 
-	vector<vector<cv::Point> > allContours;
+	vector<vector<cv::Point>> allContours;
 	findContours(bw, allContours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE);
 
 	for (vector<vector<cv::Point>>::iterator it = allContours.begin(); it != allContours.end(); it++) {
