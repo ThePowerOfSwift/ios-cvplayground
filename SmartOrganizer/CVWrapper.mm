@@ -38,10 +38,6 @@ using namespace cv;
 		return nil;
 	}
 
-	return [CVWrapper debugDrawLargestBlobWithMat:srcMat edges:edges];
-}
-
-+ (UIImage *)debugDrawLargestBlobWithMat:(cv::Mat &)srcMat edges:(NSUInteger)edges {
 	vector<cv::Point> corners;
 	[CVWrapper findLargestBlob:srcMat edges:edges output:corners];
 
@@ -49,6 +45,15 @@ using namespace cv;
 	contours.push_back(corners);
 	drawContours(srcMat, contours, 0, Scalar(255, 0, 0));
 	return MatToUIImage(srcMat);
+}
+
++ (void)debugDrawLargestBlobOnMat:(cv::Mat &)srcMat edges:(NSUInteger)edges {
+	vector<cv::Point> corners;
+	[CVWrapper findLargestBlob:srcMat edges:edges output:corners];
+
+	vector<vector<cv::Point>> contours;
+	contours.push_back(corners);
+	drawContours(srcMat, contours, 0, Scalar(255, 0, 0));
 }
 
 + (UIImage *)debugDrawBlobs:(UIImage *)src aspectRatio:(CGFloat)ratio {

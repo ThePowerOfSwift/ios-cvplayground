@@ -21,7 +21,7 @@
 + (UIImage *)debugDrawBlobs:(UIImage *)src aspectRatio:(CGFloat)ratio;
 
 #ifdef __cplusplus
-+ (UIImage *)debugDrawLargestBlobWithMat:(cv::Mat &)srcMat edges:(NSUInteger)edges;
++ (void)debugDrawLargestBlobOnMat:(cv::Mat &)srcMat edges:(NSUInteger)edges;
 #endif
 
 @end

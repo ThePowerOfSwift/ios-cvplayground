@@ -28,9 +28,10 @@
 	videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
 	videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset1280x720;
 	videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
-	videoCamera.defaultFPS = 30;
+	videoCamera.defaultFPS = 15;
 	videoCamera.delegate = self;
 	videoCamera.grayscaleMode = NO;
+	videoCamera.rotateVideo = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -41,7 +42,7 @@
 #pragma mark - CvVideoCameraDelegate
 
 - (void)processImage:(cv::Mat &)image {
-	self.imageView.image = [CVWrapper debugDrawLargestBlobWithMat:image edges:4];
+	[CVWrapper debugDrawLargestBlobOnMat:image edges:4];
 }
 
 @end
