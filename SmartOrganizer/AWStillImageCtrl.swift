@@ -22,9 +22,9 @@ class AWStillImageCtrl: UIViewController {
 			return
 		}
 
-		imageView?.image = OpenCVWrapper.debugDrawLargestBlob(image, edges: 4);
+		imageView?.image = CVWrapper.debugDrawLargestBlob(image, edges: 4);
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)*5), dispatch_get_main_queue(), {
-			self.imageView?.image = OpenCVWrapper.warpLargestRectangle(image)
+			self.imageView?.image = CVWrapper.warpLargestRectangle(image)
 		})
 	}
 }

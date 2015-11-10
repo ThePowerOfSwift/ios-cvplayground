@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OpenCVWrapper: NSObject
+@interface CVWrapper: NSObject
 
 + (UIImage *)warpLargestRectangle:(UIImage *)src;
 

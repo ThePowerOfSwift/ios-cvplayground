@@ -11,7 +11,7 @@
 		4375AA1F1BF2560200155A19 /* AWCameraCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4375AA1E1BF2560200155A19 /* AWCameraCtrl.swift */; };
 		4382C5D31BEFB66E000D4C58 /* CIDetectorControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382C5D21BEFB66E000D4C58 /* CIDetectorControllerTests.swift */; };
 		4382C5DC1BEFC442000D4C58 /* AWStillImageCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382C5DB1BEFC442000D4C58 /* AWStillImageCtrl.swift */; };
-		4382C5DF1BEFC4DB000D4C58 /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4382C5DE1BEFC4DB000D4C58 /* OpenCVWrapper.mm */; };
+		4382C5DF1BEFC4DB000D4C58 /* CVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4382C5DE1BEFC4DB000D4C58 /* CVWrapper.mm */; };
 		43B26C4E1BEBAEE500804460 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B26C4D1BEBAEE500804460 /* AppDelegate.swift */; };
 		43B26C531BEBAEE500804460 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B26C511BEBAEE500804460 /* Main.storyboard */; };
 		43B26C551BEBAEE500804460 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B26C541BEBAEE500804460 /* Assets.xcassets */; };
@@ -37,8 +37,8 @@
 		4382C5D21BEFB66E000D4C58 /* CIDetectorControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDetectorControllerTests.swift; sourceTree = "<group>"; };
 		4382C5D41BEFB66E000D4C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4382C5DB1BEFC442000D4C58 /* AWStillImageCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWStillImageCtrl.swift; sourceTree = "<group>"; };
-		4382C5DD1BEFC4DB000D4C58 /* OpenCVWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
-		4382C5DE1BEFC4DB000D4C58 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
+		4382C5DD1BEFC4DB000D4C58 /* CVWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVWrapper.h; sourceTree = "<group>"; };
+		4382C5DE1BEFC4DB000D4C58 /* CVWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVWrapper.mm; sourceTree = "<group>"; };
 		43B26C4A1BEBAEE500804460 /* SmartOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B26C4D1BEBAEE500804460 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43B26C521BEBAEE500804460 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,8 +126,8 @@
 				43B26C591BEBAEE500804460 /* Info.plist */,
 				43B26C561BEBAEE500804460 /* LaunchScreen.storyboard */,
 				43B26C511BEBAEE500804460 /* Main.storyboard */,
-				4382C5DD1BEFC4DB000D4C58 /* OpenCVWrapper.h */,
-				4382C5DE1BEFC4DB000D4C58 /* OpenCVWrapper.mm */,
+				4382C5DD1BEFC4DB000D4C58 /* CVWrapper.h */,
+				4382C5DE1BEFC4DB000D4C58 /* CVWrapper.mm */,
 				43B26C5F1BEBB04400804460 /* SmartOrganizer-Bridging-Header.h */,
 			);
 			path = SmartOrganizer;
@@ -296,7 +296,7 @@
 				4375AA1F1BF2560200155A19 /* AWCameraCtrl.swift in Sources */,
 				4382C5DC1BEFC442000D4C58 /* AWStillImageCtrl.swift in Sources */,
 				4369A8A91BEE3659000C8EFD /* AWHomeCtrl.swift in Sources */,
-				4382C5DF1BEFC4DB000D4C58 /* OpenCVWrapper.mm in Sources */,
+				4382C5DF1BEFC4DB000D4C58 /* CVWrapper.mm in Sources */,
 				43B26C4E1BEBAEE500804460 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

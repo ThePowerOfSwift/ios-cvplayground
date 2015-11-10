@@ -8,12 +8,12 @@
 
 #import <opencv2/opencv.hpp>
 #import <opencv2/highgui/ios.h>
-#import "OpenCVWrapper.h"
+#import "CVWrapper.h"
 
 using namespace std;
 using namespace cv;
 
-@implementation OpenCVWrapper
+@implementation CVWrapper
 
 #pragma mark - Public Functions
 
@@ -26,8 +26,8 @@ using namespace cv;
 	}
 
 	vector<cv::Point> corners;
-	[OpenCVWrapper findLargestBlob:srcMat edges:4 output:&corners];
-	return [OpenCVWrapper warpPerspective:srcMat corners:corners];
+	[CVWrapper findLargestBlob:srcMat edges:4 output:&corners];
+	return [CVWrapper warpPerspective:srcMat corners:corners];
 }
 
 + (UIImage *)debugDrawLargestBlob:(UIImage *)src edges:(NSUInteger)edges {
@@ -39,7 +39,7 @@ using namespace cv;
 	}
 
 	vector<cv::Point> corners;
-	[OpenCVWrapper findLargestBlob:srcMat edges:edges output:&corners];
+	[CVWrapper findLargestBlob:srcMat edges:edges output:&corners];
 
 	vector<vector<cv::Point>> contours;
 	contours.push_back(corners);
@@ -60,8 +60,8 @@ using namespace cv;
 
 	// NOTE: This is not vert effective since we can reuse the result of
 	// cvtColor, threshold, and bitwise_not.
-	[OpenCVWrapper findBlobBoundingBoxes:srcMat.clone() aspectRatio:ratio output:&boxes];
-	[OpenCVWrapper findBlobContours:srcMat.clone() aspectRatio:ratio output:&contours];
+	[CVWrapper findBlobBoundingBoxes:srcMat.clone() aspectRatio:ratio output:&boxes];
+	[CVWrapper findBlobContours:srcMat.clone() aspectRatio:ratio output:&contours];
 
 	drawContours(srcMat, contours, -1, Scalar(255, 0, 0));
 	for (vector<cv::Rect>::iterator it = boxes.begin(); it != boxes.end(); it++) {
