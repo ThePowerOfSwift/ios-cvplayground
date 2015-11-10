@@ -80,17 +80,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SZm-ro-Ps0">
-                                <rect key="frame" x="20" y="72" width="560" height="508"/>
+                                <rect key="frame" x="20" y="72" width="560" height="520"/>
                                 <animations/>
                             </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="SZm-ro-Ps0" secondAttribute="bottom" constant="20" symbolic="YES" id="A5i-HI-aXX"/>
-                            <constraint firstItem="SZm-ro-Ps0" firstAttribute="leading" secondItem="ODu-5x-Oa2" secondAttribute="leadingMargin" id="ABS-uc-lh5"/>
-                            <constraint firstItem="SZm-ro-Ps0" firstAttribute="top" secondItem="HW4-6s-FRd" secondAttribute="bottom" constant="8" symbolic="YES" id="lRR-zn-R7U"/>
-                            <constraint firstItem="SZm-ro-Ps0" firstAttribute="trailing" secondItem="ODu-5x-Oa2" secondAttribute="trailingMargin" id="nxO-4N-xcY"/>
+                            <constraint firstItem="SZm-ro-Ps0" firstAttribute="trailing" secondItem="ODu-5x-Oa2" secondAttribute="trailingMargin" id="DkD-pj-0kx"/>
+                            <constraint firstItem="SZm-ro-Ps0" firstAttribute="top" secondItem="HW4-6s-FRd" secondAttribute="bottom" constant="8" symbolic="YES" id="iVJ-ho-5Ou"/>
+                            <constraint firstItem="SZm-ro-Ps0" firstAttribute="leading" secondItem="ODu-5x-Oa2" secondAttribute="leadingMargin" id="sEs-mR-uWV"/>
+                            <constraint firstItem="Mjp-x5-uIX" firstAttribute="top" secondItem="SZm-ro-Ps0" secondAttribute="bottom" constant="8" symbolic="YES" id="x6b-ao-6rk"/>
                         </constraints>
                     </view>
                     <connections>
@@ -104,7 +104,7 @@
         <!--Camera-->
         <scene sceneID="Cw9-EW-Htg">
             <objects>
-                <viewController title="Camera" id="EeX-tt-hf9" customClass="AWCameraCtrl" customModule="SmartOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Camera" id="EeX-tt-hf9" customClass="AWCameraCtrl" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kbc-3K-auH"/>
                         <viewControllerLayoutGuide type="bottom" id="qVR-UY-1z6"/>
@@ -112,9 +112,24 @@
                     <view key="view" contentMode="scaleToFill" id="fts-3R-oRz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9fH-3M-50x">
+                                <rect key="frame" x="20" y="72" width="560" height="520"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9fH-3M-50x" firstAttribute="trailing" secondItem="fts-3R-oRz" secondAttribute="trailingMargin" id="7kO-3x-OH3"/>
+                            <constraint firstItem="9fH-3M-50x" firstAttribute="top" secondItem="Kbc-3K-auH" secondAttribute="bottom" constant="8" symbolic="YES" id="Dqc-EC-UfE"/>
+                            <constraint firstItem="9fH-3M-50x" firstAttribute="leading" secondItem="fts-3R-oRz" secondAttribute="leadingMargin" id="kaM-Yd-VFG"/>
+                            <constraint firstItem="qVR-UY-1z6" firstAttribute="top" secondItem="9fH-3M-50x" secondAttribute="bottom" constant="8" symbolic="YES" id="pen-7c-v4M"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="9fH-3M-50x" id="bOX-75-oS1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HaW-uM-lcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

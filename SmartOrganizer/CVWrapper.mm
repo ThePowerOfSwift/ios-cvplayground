@@ -26,7 +26,7 @@ using namespace cv;
 	}
 
 	vector<cv::Point> corners;
-	[CVWrapper findLargestBlob:srcMat edges:4 output:&corners];
+	[CVWrapper findLargestBlob:srcMat edges:4 output:corners];
 	return [CVWrapper warpPerspective:srcMat corners:corners];
 }
 
@@ -38,8 +38,12 @@ using namespace cv;
 		return nil;
 	}
 
+	return [CVWrapper debugDrawLargestBlobWithMat:srcMat edges:edges];
+}
+
++ (UIImage *)debugDrawLargestBlobWithMat:(cv::Mat &)srcMat edges:(NSUInteger)edges {
 	vector<cv::Point> corners;
-	[CVWrapper findLargestBlob:srcMat edges:edges output:&corners];
+	[CVWrapper findLargestBlob:srcMat edges:edges output:corners];
 
 	vector<vector<cv::Point>> contours;
 	contours.push_back(corners);
@@ -60,8 +64,8 @@ using namespace cv;
 
 	// NOTE: This is not vert effective since we can reuse the result of
 	// cvtColor, threshold, and bitwise_not.
-	[CVWrapper findBlobBoundingBoxes:srcMat.clone() aspectRatio:ratio output:&boxes];
-	[CVWrapper findBlobContours:srcMat.clone() aspectRatio:ratio output:&contours];
+	[CVWrapper findBlobBoundingBoxes:srcMat.clone() aspectRatio:ratio output:boxes];
+	[CVWrapper findBlobContours:srcMat.clone() aspectRatio:ratio output:contours];
 
 	drawContours(srcMat, contours, -1, Scalar(255, 0, 0));
 	for (vector<cv::Rect>::iterator it = boxes.begin(); it != boxes.end(); it++) {
@@ -80,7 +84,7 @@ using namespace cv;
  * @param largest Allocated vector of cv::Point, needs to be initially cleared
  *                so this function can operate properly.
  */
-+ (void)findLargestBlob:(Mat)srcMat edges:(NSInteger)edges output:(vector<cv::Point> *)largest {
++ (void)findLargestBlob:(Mat)srcMat edges:(NSInteger)edges output:(vector<cv::Point> &)largest {
 	Mat bw;
 	cvtColor(srcMat, bw, CV_BGR2GRAY);
 	threshold(bw, bw, 128, 255, CV_THRESH_BINARY);
@@ -97,8 +101,8 @@ using namespace cv;
 			approxPolyDP(*it, approx, 0.02*peri, true);
 			if (area > maxArea && approx.size() == edges) {
 				// Credit: http://stackoverflow.com/questions/2551775/c-appending-a-vector-to-a-vector
-				largest->clear();
-				largest->insert(end(*largest), begin(approx), end(approx));
+				largest.clear();
+				largest.insert(end(largest), begin(approx), end(approx));
 				maxArea = area;
 			}
 		}
@@ -111,7 +115,7 @@ using namespace cv;
  *
  * @param boxes Allocated vector of cv::Rect.
  */
-+ (void)findBlobBoundingBoxes:(Mat)srcMat aspectRatio:(CGFloat)ratio output:(vector<cv::Rect> *)boxes {
++ (void)findBlobBoundingBoxes:(Mat)srcMat aspectRatio:(CGFloat)ratio output:(vector<cv::Rect> &)boxes {
 	Mat bw;
 	cvtColor(srcMat, bw, CV_BGR2GRAY);
 	threshold(bw, bw, 128, 255, CV_THRESH_BINARY);
@@ -124,7 +128,7 @@ using namespace cv;
 		cv::Rect rect = boundingRect(*it);
 		double k = (rect.height+0.0)/rect.width;
 		if (fabs(k - ratio) < 0.1 && rect.area() > 100) {
-			boxes->push_back(rect);
+			boxes.push_back(rect);
 		}
 	}
 }
@@ -136,7 +140,7 @@ using namespace cv;
  * @param contours Allocated vector of vector of cv::Point, needs to be
  *                 initially cleared so this function can operate properly.
  */
-+ (void)findBlobContours:(Mat)srcMat aspectRatio:(CGFloat)ratio output:(vector<vector<cv::Point>> *)contours {
++ (void)findBlobContours:(Mat)srcMat aspectRatio:(CGFloat)ratio output:(vector<vector<cv::Point>> &)contours {
 	Mat bw;
 	cvtColor(srcMat, bw, CV_BGR2GRAY);
 	threshold(bw, bw, 128, 255, CV_THRESH_BINARY);
@@ -149,7 +153,7 @@ using namespace cv;
 		cv::Rect rect = boundingRect(*it);
 		double k = (rect.height+0.0)/rect.width;
 		if (fabs(k - ratio) < 0.1 && rect.area() > 100) {
-			contours->push_back(*it);
+			contours.push_back(*it);
 		}
 	}
 }
