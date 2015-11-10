@@ -7,7 +7,7 @@
 //
 
 #import <opencv2/opencv.hpp>
-#import "UIImage+OpenCV.h"
+#import <opencv2/highgui/ios.h>
 #import "OpenCVWrapper.h"
 
 using namespace std;
@@ -18,7 +18,8 @@ using namespace cv;
 #pragma mark - Public Functions
 
 + (UIImage *)warpLargestRectangle:(UIImage *)src {
-	Mat srcMat = [src CVMat];
+	Mat srcMat;
+	UIImageToMat(src, srcMat);
 	if (srcMat.empty()) {
 		cout << "Input image is invalid!" << endl;
 		return nil;
@@ -30,7 +31,8 @@ using namespace cv;
 }
 
 + (UIImage *)debugDrawLargestBlob:(UIImage *)src edges:(NSUInteger)edges {
-	Mat srcMat = [src CVMat];
+	Mat srcMat;
+	UIImageToMat(src, srcMat);
 	if (srcMat.empty()) {
 		cout << "Input image is invalid!" << endl;
 		return nil;
@@ -42,11 +44,12 @@ using namespace cv;
 	vector<vector<cv::Point>> contours;
 	contours.push_back(corners);
 	drawContours(srcMat, contours, 0, Scalar(255, 0, 0));
-	return [UIImage imageWithCVMat:srcMat];
+	return MatToUIImage(srcMat);
 }
 
 + (UIImage *)debugDrawBlobs:(UIImage *)src aspectRatio:(CGFloat)ratio {
-	Mat srcMat = [src CVMat];
+	Mat srcMat;
+	UIImageToMat(src, srcMat);
 	if (srcMat.empty()) {
 		cout << "Input image is invalid!" << endl;
 		return nil;
@@ -64,7 +67,7 @@ using namespace cv;
 	for (vector<cv::Rect>::iterator it = boxes.begin(); it != boxes.end(); it++) {
 		rectangle(srcMat, *it, Scalar(0, 255, 0));
 	}
-	return [UIImage imageWithCVMat:srcMat];
+	return MatToUIImage(srcMat);
 }
 
 #pragma mark - Private Utilities
@@ -177,7 +180,7 @@ using namespace cv;
 	Mat transmtx = getPerspectiveTransform(corners2f, quad_pts);
 	warpPerspective(srcMat, quad, transmtx, quad.size());
 
-	return [UIImage imageWithCVMat:quad];
+	return MatToUIImage(quad);
 }
 
 @end
