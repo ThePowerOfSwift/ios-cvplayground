@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4369A8A91BEE3659000C8EFD /* AWHomeCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369A8A81BEE3659000C8EFD /* AWHomeCtrl.swift */; };
-		4375AA241BF2586800155A19 /* AWCameraCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4375AA231BF2586800155A19 /* AWCameraCtrl.mm */; };
+		4375AA241BF2586800155A19 /* AWVideoCameraCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4375AA231BF2586800155A19 /* AWVideoCameraCtrl.mm */; };
 		4382C5D31BEFB66E000D4C58 /* CIDetectorControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382C5D21BEFB66E000D4C58 /* CIDetectorControllerTests.swift */; };
 		4382C5DC1BEFC442000D4C58 /* AWStillImageCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382C5DB1BEFC442000D4C58 /* AWStillImageCtrl.swift */; };
 		4382C5DF1BEFC4DB000D4C58 /* CVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4382C5DE1BEFC4DB000D4C58 /* CVWrapper.mm */; };
@@ -16,6 +16,8 @@
 		43B26C531BEBAEE500804460 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B26C511BEBAEE500804460 /* Main.storyboard */; };
 		43B26C551BEBAEE500804460 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B26C541BEBAEE500804460 /* Assets.xcassets */; };
 		43B26C581BEBAEE500804460 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B26C561BEBAEE500804460 /* LaunchScreen.storyboard */; };
+		43D132781BF38EC700863FD6 /* AWPhotoCameraCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43D132771BF38EC700863FD6 /* AWPhotoCameraCtrl.mm */; };
+		43D1327B1BF399B700863FD6 /* CVPhotoCameraMod.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43D1327A1BF399B700863FD6 /* CVPhotoCameraMod.mm */; };
 		61AEC604DE0B99A2C36D412F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 302415F952E70450653332DA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -32,8 +34,8 @@
 /* Begin PBXFileReference section */
 		302415F952E70450653332DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4369A8A81BEE3659000C8EFD /* AWHomeCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWHomeCtrl.swift; sourceTree = "<group>"; };
-		4375AA221BF2586800155A19 /* AWCameraCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWCameraCtrl.h; sourceTree = "<group>"; };
-		4375AA231BF2586800155A19 /* AWCameraCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AWCameraCtrl.mm; sourceTree = "<group>"; };
+		4375AA221BF2586800155A19 /* AWVideoCameraCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWVideoCameraCtrl.h; sourceTree = "<group>"; };
+		4375AA231BF2586800155A19 /* AWVideoCameraCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AWVideoCameraCtrl.mm; sourceTree = "<group>"; };
 		4382C5D01BEFB66D000D4C58 /* SmartOrganizerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartOrganizerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4382C5D21BEFB66E000D4C58 /* CIDetectorControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDetectorControllerTests.swift; sourceTree = "<group>"; };
 		4382C5D41BEFB66E000D4C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +49,10 @@
 		43B26C571BEBAEE500804460 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43B26C591BEBAEE500804460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43B26C5F1BEBB04400804460 /* SmartOrganizer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartOrganizer-Bridging-Header.h"; sourceTree = "<group>"; };
+		43D132761BF38EC700863FD6 /* AWPhotoCameraCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWPhotoCameraCtrl.h; sourceTree = "<group>"; };
+		43D132771BF38EC700863FD6 /* AWPhotoCameraCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AWPhotoCameraCtrl.mm; sourceTree = "<group>"; };
+		43D132791BF399B700863FD6 /* CVPhotoCameraMod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVPhotoCameraMod.h; sourceTree = "<group>"; };
+		43D1327A1BF399B700863FD6 /* CVPhotoCameraMod.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVPhotoCameraMod.mm; sourceTree = "<group>"; };
 		5149A534AC079BDC672A32EB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8714C4A6A4F8D71D5488F1F8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,16 +127,20 @@
 			children = (
 				43B26C4D1BEBAEE500804460 /* AppDelegate.swift */,
 				43B26C541BEBAEE500804460 /* Assets.xcassets */,
-				4375AA221BF2586800155A19 /* AWCameraCtrl.h */,
-				4375AA231BF2586800155A19 /* AWCameraCtrl.mm */,
 				4369A8A81BEE3659000C8EFD /* AWHomeCtrl.swift */,
+				43D132761BF38EC700863FD6 /* AWPhotoCameraCtrl.h */,
+				43D132771BF38EC700863FD6 /* AWPhotoCameraCtrl.mm */,
 				4382C5DB1BEFC442000D4C58 /* AWStillImageCtrl.swift */,
+				4375AA221BF2586800155A19 /* AWVideoCameraCtrl.h */,
+				4375AA231BF2586800155A19 /* AWVideoCameraCtrl.mm */,
 				4382C5DD1BEFC4DB000D4C58 /* CVWrapper.h */,
 				4382C5DE1BEFC4DB000D4C58 /* CVWrapper.mm */,
 				43B26C591BEBAEE500804460 /* Info.plist */,
 				43B26C561BEBAEE500804460 /* LaunchScreen.storyboard */,
 				43B26C511BEBAEE500804460 /* Main.storyboard */,
 				43B26C5F1BEBB04400804460 /* SmartOrganizer-Bridging-Header.h */,
+				43D132791BF399B700863FD6 /* CVPhotoCameraMod.h */,
+				43D1327A1BF399B700863FD6 /* CVPhotoCameraMod.mm */,
 			);
 			path = SmartOrganizer;
 			sourceTree = "<group>";
@@ -295,11 +305,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43D1327B1BF399B700863FD6 /* CVPhotoCameraMod.mm in Sources */,
 				4382C5DC1BEFC442000D4C58 /* AWStillImageCtrl.swift in Sources */,
 				4369A8A91BEE3659000C8EFD /* AWHomeCtrl.swift in Sources */,
 				4382C5DF1BEFC4DB000D4C58 /* CVWrapper.mm in Sources */,
 				43B26C4E1BEBAEE500804460 /* AppDelegate.swift in Sources */,
-				4375AA241BF2586800155A19 /* AWCameraCtrl.mm in Sources */,
+				43D132781BF38EC700863FD6 /* AWPhotoCameraCtrl.mm in Sources */,
+				4375AA241BF2586800155A19 /* AWVideoCameraCtrl.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

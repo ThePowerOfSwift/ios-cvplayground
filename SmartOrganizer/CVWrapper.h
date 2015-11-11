@@ -12,7 +12,7 @@
 #import <opencv2/opencv.hpp>
 #endif
 
-@interface CVWrapper: NSObject
+@interface CVWrapper : NSObject
 
 + (UIImage *)warpLargestRectangle:(UIImage *)src;
 

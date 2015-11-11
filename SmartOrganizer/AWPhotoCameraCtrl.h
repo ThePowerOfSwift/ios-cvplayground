@@ -1,15 +1,17 @@
 //
-//  AWCameraCtrl.h
+//  AWPhotoCameraCtrl.h
 //  SmartOrganizer
 //
-//  Created by iwat on 11/10/15.
+//  Created by iwat on 11/11/15.
 //  Copyright © 2015 AuthorWise. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface AWCameraCtrl: UIViewController
+@interface AWPhotoCameraCtrl : UIViewController
 
 @property (weak) IBOutlet UIImageView *imageView;
+
+- (IBAction)takePicture;
 
 @end

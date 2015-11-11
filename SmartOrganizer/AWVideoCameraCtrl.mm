@@ -1,5 +1,5 @@
 //
-//  AWCameraCtrl.m
+//  AWVideoCameraCtrl.m
 //  SmartOrganizer
 //
 //  Created by iwat on 11/10/15.
@@ -10,12 +10,12 @@
 
 #import "CVWrapper.h"
 
-#import "AWCameraCtrl.h"
+#import "AWVideoCameraCtrl.h"
 
-@interface AWCameraCtrl () <CvVideoCameraDelegate>
+@interface AWVideoCameraCtrl () <CvVideoCameraDelegate>
 @end
 
-@implementation AWCameraCtrl {
+@implementation AWVideoCameraCtrl {
 	CvVideoCamera *videoCamera;
 }
 
