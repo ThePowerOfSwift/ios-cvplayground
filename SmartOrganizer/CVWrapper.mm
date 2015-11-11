@@ -47,7 +47,7 @@ using namespace cv;
 	return MatToUIImage(srcMat);
 }
 
-+ (void)debugDrawLargestBlobOnMat:(cv::Mat &)srcMat edges:(NSUInteger)edges {
++ (void)debugDrawLargestBlobOnMat:(Mat &)srcMat edges:(NSUInteger)edges {
 	vector<cv::Point> corners;
 	[CVWrapper findLargestBlob:srcMat edges:edges output:corners];
 
@@ -69,8 +69,8 @@ using namespace cv;
 
 	// NOTE: This is not vert effective since we can reuse the result of
 	// cvtColor, threshold, and bitwise_not.
-	[CVWrapper findBlobBoundingBoxes:srcMat.clone() aspectRatio:ratio output:boxes];
-	[CVWrapper findBlobContours:srcMat.clone() aspectRatio:ratio output:contours];
+	[CVWrapper findBlobBoundingBoxes:srcMat aspectRatio:ratio output:boxes];
+	[CVWrapper findBlobContours:srcMat aspectRatio:ratio output:contours];
 
 	drawContours(srcMat, contours, -1, Scalar(255, 0, 0));
 	for (vector<cv::Rect>::iterator it = boxes.begin(); it != boxes.end(); it++) {
@@ -89,20 +89,19 @@ using namespace cv;
  * @param largest Allocated vector of cv::Point, needs to be initially cleared
  *                so this function can operate properly.
  */
-+ (void)findLargestBlob:(Mat)srcMat edges:(NSInteger)edges output:(vector<cv::Point> &)largest {
++ (void)findLargestBlob:(Mat &)srcMat edges:(NSInteger)edges output:(vector<cv::Point> &)largest {
 	Mat bw;
 	cvtColor(srcMat, bw, CV_BGR2GRAY);
-	threshold(bw, bw, 128, 255, CV_THRESH_BINARY);
+	blur(bw, bw, cv::Size(3, 3));
+	Canny(bw, bw, 50, 200, 3);
 
 	vector<vector<cv::Point>> contours;
 	findContours(bw, contours, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE);
 
-	vector<vector<cv::Point>> chosen;
 	double maxArea = 0;
 	for (vector<vector<cv::Point>>::iterator it = contours.begin(); it != contours.end(); it++) {
 		double area = contourArea(*it);
 		if (area > 500) {
-			chosen.push_back(*it);
 			double peri = arcLength(*it, true);
 			vector<cv::Point> approx;
 			approxPolyDP(*it, approx, 0.02*peri, true);
@@ -114,7 +113,6 @@ using namespace cv;
 			}
 		}
 	}
-	drawContours(srcMat, chosen, -1, Scalar(255, 0, 0));
 }
 
 /*
@@ -123,7 +121,7 @@ using namespace cv;
  *
  * @param boxes Allocated vector of cv::Rect.
  */
-+ (void)findBlobBoundingBoxes:(Mat)srcMat aspectRatio:(CGFloat)ratio output:(vector<cv::Rect> &)boxes {
++ (void)findBlobBoundingBoxes:(Mat &)srcMat aspectRatio:(CGFloat)ratio output:(vector<cv::Rect> &)boxes {
 	Mat bw;
 	cvtColor(srcMat, bw, CV_BGR2GRAY);
 	threshold(bw, bw, 128, 255, CV_THRESH_BINARY);
@@ -148,7 +146,7 @@ using namespace cv;
  * @param contours Allocated vector of vector of cv::Point, needs to be
  *                 initially cleared so this function can operate properly.
  */
-+ (void)findBlobContours:(Mat)srcMat aspectRatio:(CGFloat)ratio output:(vector<vector<cv::Point>> &)contours {
++ (void)findBlobContours:(Mat &)srcMat aspectRatio:(CGFloat)ratio output:(vector<vector<cv::Point>> &)contours {
 	Mat bw;
 	cvtColor(srcMat, bw, CV_BGR2GRAY);
 	threshold(bw, bw, 128, 255, CV_THRESH_BINARY);
@@ -168,7 +166,7 @@ using namespace cv;
 
 #pragma mark - UIImage Output Functions
 
-+ (UIImage *)warpPerspective:(Mat)srcMat corners:(vector<cv::Point>)corners {
++ (UIImage *)warpPerspective:(Mat &)srcMat corners:(vector<cv::Point>)corners {
 	if (corners.size() != 4) {
 		cout << "4 corners only" << endl;
 		return nil;
