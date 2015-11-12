@@ -14,7 +14,10 @@
 #import "AWPhotoCameraCtrl.h"
 
 //#define CVPhotoCameraMod CvPhotoCamera
-//#define CVPhotoCameraModDelegate CvPhotoCameraDelegate
+
+#ifdef CVPhotoCameraMod
+#define CVPhotoCameraModDelegate CvPhotoCameraDelegate
+#endif
 
 @interface AWPhotoCameraCtrl () <CVPhotoCameraModDelegate>
 @end
@@ -40,13 +43,16 @@
 	photoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
 	photoCamera.defaultFPS = 15;
 	photoCamera.delegate = self;
+	photoCamera.rotateCamera = YES;
 	photoCamera.useAVCaptureVideoPreviewLayer = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	[photoCamera start];
-	//[photoCamera createCustomVideoPreview];
+#ifndef CVPhotoCameraMod
+	[photoCamera createCustomVideoPreview];
+#endif
 }
 
 #pragma mark - CVPhotoCameraModDelegate
@@ -56,15 +62,22 @@
 		return;
 	}
 
-	//[photoCamera stop];
-	image = [CVWrapper warpLargestRectangle:image];
+	[photoCamera stop];
+	NSError *error = nil;
+	UIImage *warped = [CVWrapper warpLargestRectangle:image error:&error];
+	if (error != nil) {
+		NSLog(@"CVWrapper.warpLargestRectangle error: %@", error);
+		[photoCamera start];
+		return;
+	}
+	self.imageView.image = warped;
 }
 
 - (void)photoCameraCancel:(CVPhotoCameraMod *)photoCamera {
 	//
 }
 
-- (void)processImage:(cv::Mat&)image {
+- (void)processImage:(cv::Mat &)image {
 	[CVWrapper debugDrawLargestBlobOnMat:image edges:4];
 }
 

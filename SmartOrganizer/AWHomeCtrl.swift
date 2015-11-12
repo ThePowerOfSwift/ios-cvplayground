@@ -9,4 +9,10 @@
 import UIKit
 
 class AWHomeCtrl: UIViewController {
+
+	// MARK: - UIViewController
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+	}
 }

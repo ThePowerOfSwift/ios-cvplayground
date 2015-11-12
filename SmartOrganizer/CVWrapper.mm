@@ -17,22 +17,24 @@ using namespace cv;
 
 #pragma mark - Public Functions
 
-+ (UIImage *)warpLargestRectangle:(UIImage *)src {
++ (UIImage *)warpLargestRectangle:(UIImage *)src error:(NSError **)errorPtr {
 	Mat srcMat;
-	UIImageToMat(src, srcMat);
+	[CVWrapper UIImageToMat:src mat:srcMat alphaExist:NO];
 	if (srcMat.empty()) {
-		cout << "Input image is invalid!" << endl;
+		*errorPtr = [NSError errorWithDomain:@"CVWrapper"
+										code:CVWrapperErrorEmptyImage
+									userInfo:@{NSLocalizedDescriptionKey: @"Input is empty"}];
 		return nil;
 	}
 
 	vector<cv::Point> corners;
 	[CVWrapper findLargestBlob:srcMat edges:4 output:corners];
-	return [CVWrapper warpPerspective:srcMat corners:corners];
+	return [CVWrapper warpPerspective:srcMat corners:corners error:errorPtr];
 }
 
 + (UIImage *)debugDrawLargestBlob:(UIImage *)src edges:(NSUInteger)edges {
 	Mat srcMat;
-	UIImageToMat(src, srcMat);
+	[CVWrapper UIImageToMat:src mat:srcMat alphaExist:NO];
 	if (srcMat.empty()) {
 		cout << "Input image is invalid!" << endl;
 		return nil;
@@ -58,7 +60,7 @@ using namespace cv;
 
 + (UIImage *)debugDrawBlobs:(UIImage *)src aspectRatio:(CGFloat)ratio {
 	Mat srcMat;
-	UIImageToMat(src, srcMat);
+	[CVWrapper UIImageToMat:src mat:srcMat alphaExist:NO];
 	if (srcMat.empty()) {
 		cout << "Input image is invalid!" << endl;
 		return nil;
@@ -80,6 +82,36 @@ using namespace cv;
 }
 
 #pragma mark - Private Utilities
+
++ (void)UIImageToMat:(UIImage *)image mat:(cv::Mat &)m alphaExist:(BOOL)alphaExist {
+	CGColorSpaceRef colorSpace = CGImageGetColorSpace(image.CGImage);
+	CGFloat cols = image.size.width, rows = image.size.height;
+	CGContextRef contextRef;
+	CGBitmapInfo bitmapInfo = kCGImageAlphaPremultipliedLast;
+	if (CGColorSpaceGetModel(colorSpace) == 0)
+	{
+		m.create(rows, cols, CV_8UC1);
+		bitmapInfo = kCGImageAlphaNone;
+		if (!alphaExist)
+			bitmapInfo = kCGImageAlphaNone;
+		contextRef = CGBitmapContextCreate(m.data, m.cols, m.rows, 8,
+										   m.step[0], colorSpace,
+										   bitmapInfo);
+	}
+	else
+	{
+		m.create(rows, cols, CV_8UC4); // 8 bits per component, 4 channels
+		if (!alphaExist)
+			bitmapInfo = kCGImageAlphaNoneSkipLast |
+			kCGBitmapByteOrderDefault;
+		contextRef = CGBitmapContextCreate(m.data, m.cols, m.rows, 8,
+										   m.step[0], colorSpace,
+										   bitmapInfo);
+	}
+	CGContextDrawImage(contextRef, CGRectMake(0, 0, cols, rows),
+					   image.CGImage);
+	CGContextRelease(contextRef);
+}
 
 #pragma mark - OpenCV Algorithms
 
@@ -166,9 +198,11 @@ using namespace cv;
 
 #pragma mark - UIImage Output Functions
 
-+ (UIImage *)warpPerspective:(Mat &)srcMat corners:(vector<cv::Point>)corners {
++ (UIImage *)warpPerspective:(Mat &)srcMat corners:(vector<cv::Point>)corners error:(NSError **)errorPtr {
 	if (corners.size() != 4) {
-		cout << "4 corners only" << endl;
+		*errorPtr = [NSError errorWithDomain:@"CVWrapper"
+										code:CVWrapperError4CornersOnly
+									userInfo:@{NSLocalizedDescriptionKey: @"rectangle is required"}];
 		return nil;
 	}
 

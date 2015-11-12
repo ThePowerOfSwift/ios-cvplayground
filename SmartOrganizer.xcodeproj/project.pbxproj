@@ -18,6 +18,7 @@
 		43B26C581BEBAEE500804460 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B26C561BEBAEE500804460 /* LaunchScreen.storyboard */; };
 		43D132781BF38EC700863FD6 /* AWPhotoCameraCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43D132771BF38EC700863FD6 /* AWPhotoCameraCtrl.mm */; };
 		43D1327B1BF399B700863FD6 /* CVPhotoCameraMod.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43D1327A1BF399B700863FD6 /* CVPhotoCameraMod.mm */; };
+		43D1327D1BF3AA0A00863FD6 /* AWiOSPhotoCameraCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D1327C1BF3AA0A00863FD6 /* AWiOSPhotoCameraCtrl.swift */; };
 		61AEC604DE0B99A2C36D412F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 302415F952E70450653332DA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		43D132771BF38EC700863FD6 /* AWPhotoCameraCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AWPhotoCameraCtrl.mm; sourceTree = "<group>"; };
 		43D132791BF399B700863FD6 /* CVPhotoCameraMod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVPhotoCameraMod.h; sourceTree = "<group>"; };
 		43D1327A1BF399B700863FD6 /* CVPhotoCameraMod.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVPhotoCameraMod.mm; sourceTree = "<group>"; };
+		43D1327C1BF3AA0A00863FD6 /* AWiOSPhotoCameraCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWiOSPhotoCameraCtrl.swift; sourceTree = "<group>"; };
 		5149A534AC079BDC672A32EB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8714C4A6A4F8D71D5488F1F8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,19 +130,20 @@
 				43B26C4D1BEBAEE500804460 /* AppDelegate.swift */,
 				43B26C541BEBAEE500804460 /* Assets.xcassets */,
 				4369A8A81BEE3659000C8EFD /* AWHomeCtrl.swift */,
+				43D1327C1BF3AA0A00863FD6 /* AWiOSPhotoCameraCtrl.swift */,
 				43D132761BF38EC700863FD6 /* AWPhotoCameraCtrl.h */,
 				43D132771BF38EC700863FD6 /* AWPhotoCameraCtrl.mm */,
 				4382C5DB1BEFC442000D4C58 /* AWStillImageCtrl.swift */,
 				4375AA221BF2586800155A19 /* AWVideoCameraCtrl.h */,
 				4375AA231BF2586800155A19 /* AWVideoCameraCtrl.mm */,
+				43D132791BF399B700863FD6 /* CVPhotoCameraMod.h */,
+				43D1327A1BF399B700863FD6 /* CVPhotoCameraMod.mm */,
 				4382C5DD1BEFC4DB000D4C58 /* CVWrapper.h */,
 				4382C5DE1BEFC4DB000D4C58 /* CVWrapper.mm */,
 				43B26C591BEBAEE500804460 /* Info.plist */,
 				43B26C561BEBAEE500804460 /* LaunchScreen.storyboard */,
 				43B26C511BEBAEE500804460 /* Main.storyboard */,
 				43B26C5F1BEBB04400804460 /* SmartOrganizer-Bridging-Header.h */,
-				43D132791BF399B700863FD6 /* CVPhotoCameraMod.h */,
-				43D1327A1BF399B700863FD6 /* CVPhotoCameraMod.mm */,
 			);
 			path = SmartOrganizer;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43D1327D1BF3AA0A00863FD6 /* AWiOSPhotoCameraCtrl.swift in Sources */,
 				43D1327B1BF399B700863FD6 /* CVPhotoCameraMod.mm in Sources */,
 				4382C5DC1BEFC442000D4C58 /* AWStillImageCtrl.swift in Sources */,
 				4369A8A91BEE3659000C8EFD /* AWHomeCtrl.swift in Sources */,

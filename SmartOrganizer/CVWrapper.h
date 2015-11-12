@@ -12,9 +12,14 @@
 #import <opencv2/opencv.hpp>
 #endif
 
+typedef NS_ENUM(NSInteger, CVWrapperError) {
+	CVWrapperErrorEmptyImage   = -1001,
+	CVWrapperError4CornersOnly = -1002
+};
+
 @interface CVWrapper : NSObject
 
-+ (UIImage *)warpLargestRectangle:(UIImage *)src;
++ (UIImage *)warpLargestRectangle:(UIImage *)src error:(NSError **)errorPtr;
 
 + (UIImage *)debugDrawLargestBlob:(UIImage *)src edges:(NSUInteger)edges;
 

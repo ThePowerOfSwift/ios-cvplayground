@@ -9,6 +9,8 @@
 
 #import "CVPhotoCameraMod.h"
 
+static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;}
+
 @implementation CVPhotoCameraMod
 
 @dynamic delegate;
@@ -28,9 +30,78 @@
 
 #pragma mark - Private Functions
 
+- (void)updateOrientation {
+	if (self.rotateCamera == YES) {
+		self.customPreviewLayer.bounds = CGRectMake(0, 0, self.parentView.frame.size.width, self.parentView.frame.size.height);
+		[self layoutPreviewLayer];
+	}
+}
+
+- (void)layoutPreviewLayer;
+{
+	NSLog(@"layout preview layer");
+	if (self.parentView != nil) {
+
+		CALayer* layer = self.customPreviewLayer;
+		CGRect bounds = self.customPreviewLayer.bounds;
+		int rotation_angle = 0;
+		bool flip_bounds = false;
+
+		switch (currentDeviceOrientation) {
+			case UIDeviceOrientationPortrait:
+				rotation_angle = 270;
+				break;
+			case UIDeviceOrientationPortraitUpsideDown:
+				rotation_angle = 90;
+				break;
+			case UIDeviceOrientationLandscapeLeft:
+				NSLog(@"left");
+				rotation_angle = 180;
+				break;
+			case UIDeviceOrientationLandscapeRight:
+				NSLog(@"right");
+				rotation_angle = 0;
+				break;
+			case UIDeviceOrientationFaceUp:
+			case UIDeviceOrientationFaceDown:
+			default:
+				break; // leave the layer in its last known orientation
+		}
+		switch (defaultAVCaptureVideoOrientation) {
+			case AVCaptureVideoOrientationLandscapeRight:
+				rotation_angle += 180;
+				break;
+			case AVCaptureVideoOrientationPortraitUpsideDown:
+				rotation_angle += 270;
+				break;
+			case AVCaptureVideoOrientationPortrait:
+				rotation_angle += 90;
+			case AVCaptureVideoOrientationLandscapeLeft:
+				break;
+			default:
+				break;
+		}
+		rotation_angle = rotation_angle % 360;
+
+		if (rotation_angle == 90 || rotation_angle == 270) {
+			flip_bounds = true;
+		}
+
+		if (flip_bounds) {
+			NSLog(@"flip bounds");
+			bounds = CGRectMake(0, 0, bounds.size.height, bounds.size.width);
+		}
+
+		layer.position = CGPointMake(self.parentView.frame.size.width/2., self.parentView.frame.size.height/2.);
+		layer.affineTransform = CGAffineTransformMakeRotation( DegreesToRadians(rotation_angle) );
+		layer.bounds = bounds;
+	}
+
+}
+
 //Method mostly taken from this source: https://github.com/Itseez/opencv/blob/b46719b0931b256ab68d5f833b8fadd83737ddd1/modules/videoio/src/cap_ios_video_camera.mm
 
--(void)createVideoDataOutput{
+- (void)createVideoDataOutput {
 	// Make a video data output
 	self.videoDataOutput = [AVCaptureVideoDataOutput new];
 

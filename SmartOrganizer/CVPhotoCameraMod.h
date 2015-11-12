@@ -18,6 +18,7 @@
 
 @interface CVPhotoCameraMod : CvPhotoCamera <AVCaptureVideoDataOutputSampleBufferDelegate>
 
+@property (nonatomic) BOOL rotateCamera;
 @property (nonatomic, retain) CALayer *customPreviewLayer;
 @property (nonatomic, retain) AVCaptureVideoDataOutput *videoDataOutput;
 @property (nonatomic, weak) id <CVPhotoCameraModDelegate> delegate;
