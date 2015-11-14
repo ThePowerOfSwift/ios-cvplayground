@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
+	videoCamera = [[CvVideoCamera alloc] initWithParentView:self.previewView];
 	videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
 	videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset1280x720;
 	videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;

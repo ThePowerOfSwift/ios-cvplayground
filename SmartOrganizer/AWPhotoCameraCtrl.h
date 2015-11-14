@@ -10,7 +10,7 @@
 
 @interface AWPhotoCameraCtrl : UIViewController
 
-@property (weak) IBOutlet UIImageView *imageView;
+@property (weak) IBOutlet UIView *previewView;
 
 - (IBAction)takePicture;
 

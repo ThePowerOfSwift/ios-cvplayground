@@ -13,6 +13,8 @@
 using namespace std;
 using namespace cv;
 
+static float targetRatio = 0.0;
+
 @implementation CVWrapper
 
 #pragma mark - Public Functions
@@ -213,13 +215,40 @@ using namespace cv;
 		corners2f.push_back(Point2f(it->x, it->y));
 	}
 
-	Mat quad = Mat::zeros(300, 220, CV_8UC3);
+	float xs[] = {
+		(float)corners[0].x - corners[1].x,
+		(float)corners[1].x - corners[2].x,
+		(float)corners[2].x - corners[3].x,
+		(float)corners[3].x - corners[0].x};
+	float ys[] = {
+		(float)corners[0].y - corners[1].y,
+		(float)corners[1].y - corners[2].y,
+		(float)corners[2].y - corners[3].y,
+		(float)corners[3].y - corners[0].y};
+	float dst[] = {0, 0, 0, 0};
+	magnitude(xs, ys, dst, 4);
+
+	float width = (dst[0] + dst[2]) * 0.5;
+	float height = (dst[1] + dst[3]) * 0.5;
+
+	cout << corners[0].x << "x" << corners[0].y << "," << corners[1].x << "x" << corners[1].y << "," << corners[2].x << "x" << corners[2].y << "," << corners[3].x << "x" << corners[3].y << endl;
+	cout << dst[0] << "," << dst[1] << "," << dst[2] << "," << dst[3] << endl;
+	cout << width << "x" << height << endl;
+
+	if (targetRatio > 0) {
+		double peri = arcLength(corners, true);
+		height = peri * 0.5 / (targetRatio + 1);
+		width = targetRatio * height;
+	}
+
+	cout << "Creating warpped Mat of size " << width << "x" << height << endl;
+	Mat quad = Mat::zeros(width, height, CV_8UC3);
 
 	vector<Point2f> quad_pts;
-	quad_pts.push_back(Point2f(0, 0));
 	quad_pts.push_back(Point2f(quad.cols, 0));
-	quad_pts.push_back(Point2f(quad.cols, quad.rows));
+	quad_pts.push_back(Point2f(0, 0));
 	quad_pts.push_back(Point2f(0, quad.rows));
+	quad_pts.push_back(Point2f(quad.cols, quad.rows));
 
 	Mat transmtx = getPerspectiveTransform(corners2f, quad_pts);
 	warpPerspective(srcMat, quad, transmtx, quad.size());

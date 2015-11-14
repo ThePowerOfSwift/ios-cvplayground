@@ -10,18 +10,21 @@ import UIKit
 import AVFoundation
 import ImageIO
 
-class AWiOSPhotoCameraCtrl: UIViewController {
+class AWiOSPhotoCameraCtrl: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
-	@IBOutlet weak var imageView: UIImageView?
+	@IBOutlet weak var previewView: UIView?
 
 	private var captureSession: AVCaptureSession?
-	private var stillImageOutput: AVCaptureStillImageOutput?
+	private var captureStillImageOutput: AVCaptureStillImageOutput?
+	private var captureVideoDataOutput: AVCaptureVideoDataOutput?
+	private var captureVideoPreviewLayer: AVCaptureVideoPreviewLayer?
+	private var captureConnection: AVCaptureConnection?
 
 	// MARK: - AWiOSPhotoCameraCtrl
 
 	@IBAction func takePicture() {
 		var optVideoConnection: AVCaptureConnection?
-		guard let connections = stillImageOutput?.connections else {
+		guard let connections = captureStillImageOutput?.connections else {
 			print("No available connections")
 			return
 		}
@@ -48,8 +51,8 @@ class AWiOSPhotoCameraCtrl: UIViewController {
 			return
 		}
 
-		print("about to request a capture from: \(stillImageOutput)")
-		stillImageOutput?.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (imageDataSampleBuffer, error) -> Void in
+		print("about to request a capture from: \(captureStillImageOutput)")
+		captureStillImageOutput?.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (imageDataSampleBuffer, error) -> Void in
 			let exifAttachments = CMGetAttachment(imageDataSampleBuffer, kCGImagePropertyExifDictionary, nil)
 			if exifAttachments != nil {
 				// Do something with the attachments.
@@ -73,39 +76,121 @@ class AWiOSPhotoCameraCtrl: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		guard let imageView = imageView else {
-			print("AWiOSPhotoCameraCtrl.imageView was nil")
+		guard let previewView = previewView else {
+			print("AWiOSPhotoCameraCtrl.previewView was nil")
 			return
 		}
 
 		let session = AVCaptureSession()
 		session.sessionPreset = AVCaptureSessionPresetPhoto
 
-		let captureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
-		captureVideoPreviewLayer.frame = imageView.bounds
-		captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-		imageView.layer.addSublayer(captureVideoPreviewLayer)
-
-		let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-
 		let input: AVCaptureDeviceInput?
 		do {
+			let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
 			input = try AVCaptureDeviceInput(device: device)
 		} catch let e {
-			print("AVCaptureDeviceInput.deviceInputWithDevice(\(device)): \(e)")
+			print("AVCaptureDeviceInput.deviceInputWithDevice: \(e)")
 			return
 		}
 
 		session.addInput(input)
 
-		let output = AVCaptureStillImageOutput()
-		output.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
-		session.addOutput(output)
+		let imageOutput = AVCaptureStillImageOutput()
+		imageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+		session.addOutput(imageOutput)
+
+		let videoOutputQueue = dispatch_queue_create("AWiOSPhotoCameraCtrl_videoDataOutput", DISPATCH_QUEUE_SERIAL)
+
+		let videoOutput = AVCaptureVideoDataOutput()
+		videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey: NSNumber(unsignedInt: kCVPixelFormatType_32BGRA)]
+		videoOutput.alwaysDiscardsLateVideoFrames = true
+		videoOutput.setSampleBufferDelegate(self, queue: videoOutputQueue)
+		session.addOutput(videoOutput)
+
+		let previewLayer = AVCaptureVideoPreviewLayer(session: session)
+		previewLayer.frame = previewView.bounds
+		previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+		previewView.layer.addSublayer(previewLayer)
+
+		let connection = videoOutput.connectionWithMediaType(AVMediaTypeVideo)
+		//connection.enabled = true
 
 		captureSession = session
-		stillImageOutput = output
+		captureStillImageOutput = imageOutput
+		captureVideoDataOutput = videoOutput
+		captureVideoPreviewLayer = previewLayer
+		captureConnection = connection
+	}
 
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
 
-		//READ MORE AT https://developer.apple.com/library/ios/qa/qa1702/_index.html
+		captureSession?.startRunning()
+	}
+
+	override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+
+		if let previewView = previewView {
+			captureVideoPreviewLayer?.frame = previewView.bounds
+		}
+	}
+
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+
+		switch UIApplication.sharedApplication().statusBarOrientation {
+		case .Portrait: captureConnection?.videoOrientation = .Portrait
+		case .PortraitUpsideDown: captureConnection?.videoOrientation = .PortraitUpsideDown
+		case .LandscapeRight: captureConnection?.videoOrientation = .LandscapeRight
+		case .LandscapeLeft: captureConnection?.videoOrientation = .LandscapeLeft
+		default: break
+		}
+	}
+
+	// MARK: - AVCaptureVideoDataOutputSampleBufferDelegate
+
+	func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
+		let image = imageFromSampleBuffer(sampleBuffer)
+		_ = image
+	}
+
+	// MARK: - Private Functions
+
+	private func imageFromSampleBuffer(sampleBuffer: CMSampleBufferRef) -> UIImage? {
+		// Get a CMSampleBuffer's Core Video image buffer for the media data
+		guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+			return nil
+		}
+		// Lock the base address of the pixel buffer
+		CVPixelBufferLockBaseAddress(imageBuffer, 0)
+
+		// Get the number of bytes per row for the pixel buffer
+		let baseAddress = CVPixelBufferGetBaseAddress(imageBuffer)
+
+		// Get the number of bytes per row for the pixel buffer
+		let bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer)
+		// Get the pixel buffer width and height
+		let width = CVPixelBufferGetWidth(imageBuffer)
+		let height = CVPixelBufferGetHeight(imageBuffer)
+
+		// Create a device-dependent RGB color space
+		let colorSpace = CGColorSpaceCreateDeviceRGB()
+
+		// Create a bitmap graphics context with the sample buffer data
+		let context = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, CGBitmapInfo.ByteOrder32Little.rawValue | CGImageAlphaInfo.PremultipliedFirst.rawValue)
+		// Create a Quartz image from the pixel data in the bitmap graphics context
+		guard let quartzImage = CGBitmapContextCreateImage(context) else {
+			return nil
+		}
+		// Unlock the pixel buffer
+		CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
+
+		dispatch_sync(dispatch_get_main_queue(), {
+			self.captureVideoPreviewLayer?.contents = quartzImage
+		});
+
+		// Create an image object from the Quartz image
+		return UIImage(CGImage: quartzImage)
 	}
 }

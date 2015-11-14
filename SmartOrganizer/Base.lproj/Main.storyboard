@@ -121,10 +121,10 @@
             </objects>
             <point key="canvasLocation" x="555" y="-428"/>
         </scene>
-        <!--Camera-->
+        <!--Video Camera-->
         <scene sceneID="Cw9-EW-Htg">
             <objects>
-                <viewController title="Camera" id="EeX-tt-hf9" customClass="AWVideoCameraCtrl" sceneMemberID="viewController">
+                <viewController title="Video Camera" id="EeX-tt-hf9" customClass="AWVideoCameraCtrl" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kbc-3K-auH"/>
                         <viewControllerLayoutGuide type="bottom" id="qVR-UY-1z6"/>
@@ -133,32 +133,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9fH-3M-50x">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baX-dC-NFv">
                                 <rect key="frame" x="20" y="72" width="560" height="520"/>
                                 <animations/>
-                            </imageView>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9fH-3M-50x" firstAttribute="trailing" secondItem="fts-3R-oRz" secondAttribute="trailingMargin" id="7kO-3x-OH3"/>
-                            <constraint firstItem="9fH-3M-50x" firstAttribute="top" secondItem="Kbc-3K-auH" secondAttribute="bottom" constant="8" symbolic="YES" id="Dqc-EC-UfE"/>
-                            <constraint firstItem="9fH-3M-50x" firstAttribute="leading" secondItem="fts-3R-oRz" secondAttribute="leadingMargin" id="kaM-Yd-VFG"/>
-                            <constraint firstItem="qVR-UY-1z6" firstAttribute="top" secondItem="9fH-3M-50x" secondAttribute="bottom" constant="8" symbolic="YES" id="pen-7c-v4M"/>
+                            <constraint firstItem="qVR-UY-1z6" firstAttribute="top" secondItem="baX-dC-NFv" secondAttribute="bottom" constant="8" symbolic="YES" id="0de-YC-bBD"/>
+                            <constraint firstItem="baX-dC-NFv" firstAttribute="leading" secondItem="fts-3R-oRz" secondAttribute="leadingMargin" id="dgf-zQ-KTb"/>
+                            <constraint firstItem="baX-dC-NFv" firstAttribute="trailing" secondItem="fts-3R-oRz" secondAttribute="trailingMargin" id="dy2-lq-6LM"/>
+                            <constraint firstItem="baX-dC-NFv" firstAttribute="top" secondItem="Kbc-3K-auH" secondAttribute="bottom" constant="8" symbolic="YES" id="wYD-nI-Z8e"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="9fH-3M-50x" id="bOX-75-oS1"/>
+                        <outlet property="previewView" destination="baX-dC-NFv" id="UHx-7b-qDJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HaW-uM-lcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="555" y="322"/>
         </scene>
-        <!--Photo-->
+        <!--Photo Camera-->
         <scene sceneID="uDu-3m-A0f">
             <objects>
-                <viewController title="Photo" id="ZIj-QW-yMz" customClass="AWPhotoCameraCtrl" sceneMemberID="viewController">
+                <viewController title="Photo Camera" id="ZIj-QW-yMz" customClass="AWPhotoCameraCtrl" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kkb-WX-hv8"/>
                         <viewControllerLayoutGuide type="bottom" id="2eq-RU-GlB"/>
@@ -167,18 +168,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ybV-U3-Skb">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7U-6e-zOl">
                                 <rect key="frame" x="20" y="72" width="560" height="520"/>
                                 <animations/>
-                            </imageView>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ybV-U3-Skb" firstAttribute="top" secondItem="kkb-WX-hv8" secondAttribute="bottom" constant="8" symbolic="YES" id="0G5-D9-8jc"/>
-                            <constraint firstItem="ybV-U3-Skb" firstAttribute="trailing" secondItem="iG7-om-7cb" secondAttribute="trailingMargin" id="egt-yR-tmR"/>
-                            <constraint firstItem="2eq-RU-GlB" firstAttribute="top" secondItem="ybV-U3-Skb" secondAttribute="bottom" constant="8" symbolic="YES" id="qDp-6u-0Ly"/>
-                            <constraint firstItem="ybV-U3-Skb" firstAttribute="leading" secondItem="iG7-om-7cb" secondAttribute="leadingMargin" id="vNx-5J-ieH"/>
+                            <constraint firstItem="k7U-6e-zOl" firstAttribute="top" secondItem="kkb-WX-hv8" secondAttribute="bottom" constant="8" symbolic="YES" id="cX4-mP-l7g"/>
+                            <constraint firstItem="2eq-RU-GlB" firstAttribute="top" secondItem="k7U-6e-zOl" secondAttribute="bottom" constant="8" symbolic="YES" id="d3W-d5-TQS"/>
+                            <constraint firstItem="k7U-6e-zOl" firstAttribute="leading" secondItem="iG7-om-7cb" secondAttribute="leadingMargin" id="sBp-2M-FWw"/>
+                            <constraint firstItem="k7U-6e-zOl" firstAttribute="trailing" secondItem="iG7-om-7cb" secondAttribute="trailingMargin" id="xb3-4m-HGk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photo" id="Mhd-Mh-NAl">
@@ -189,17 +191,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageView" destination="ybV-U3-Skb" id="G8P-fv-9Pe"/>
+                        <outlet property="previewView" destination="k7U-6e-zOl" id="wSj-7A-ha5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VfU-cy-yMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="555" y="1114"/>
         </scene>
-        <!--Photo-->
+        <!--iOS Photo-->
         <scene sceneID="hS3-0h-hM1">
             <objects>
-                <viewController title="Photo" id="VUS-E9-3pd" customClass="AWiOSPhotoCameraCtrl" customModule="SmartOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="iOS Photo" id="VUS-E9-3pd" customClass="AWiOSPhotoCameraCtrl" customModule="SmartOrganizer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QQq-qo-ZdA"/>
                         <viewControllerLayoutGuide type="bottom" id="u6x-9C-GYY"/>
@@ -208,21 +210,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ag3-7v-KsM">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1G-vo-4wU">
                                 <rect key="frame" x="20" y="72" width="560" height="520"/>
                                 <animations/>
-                            </imageView>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="u6x-9C-GYY" firstAttribute="top" secondItem="Ag3-7v-KsM" secondAttribute="bottom" constant="8" symbolic="YES" id="3jq-Cz-ghp"/>
-                            <constraint firstItem="Ag3-7v-KsM" firstAttribute="leading" secondItem="OzJ-sp-ttI" secondAttribute="leadingMargin" id="LqM-fg-lPa"/>
-                            <constraint firstItem="Ag3-7v-KsM" firstAttribute="trailing" secondItem="OzJ-sp-ttI" secondAttribute="trailingMargin" id="kTM-uD-ZL8"/>
-                            <constraint firstItem="Ag3-7v-KsM" firstAttribute="top" secondItem="QQq-qo-ZdA" secondAttribute="bottom" constant="8" symbolic="YES" id="tlg-7K-FlK"/>
+                            <constraint firstItem="t1G-vo-4wU" firstAttribute="trailing" secondItem="OzJ-sp-ttI" secondAttribute="trailingMargin" id="2DU-oG-6aI"/>
+                            <constraint firstItem="t1G-vo-4wU" firstAttribute="leading" secondItem="OzJ-sp-ttI" secondAttribute="leadingMargin" id="4Bs-R8-fG1"/>
+                            <constraint firstItem="t1G-vo-4wU" firstAttribute="top" secondItem="QQq-qo-ZdA" secondAttribute="bottom" constant="8" symbolic="YES" id="5Wg-Fn-opg"/>
+                            <constraint firstItem="u6x-9C-GYY" firstAttribute="top" secondItem="t1G-vo-4wU" secondAttribute="bottom" constant="8" symbolic="YES" id="KjD-EU-Hvc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Photo" id="pHh-vs-E5x">
+                    <navigationItem key="navigationItem" title="iOS Photo" id="pHh-vs-E5x">
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="Jic-pJ-WtU">
                             <connections>
                                 <action selector="takePicture" destination="VUS-E9-3pd" id="nZN-Xu-a9f"/>
@@ -230,7 +233,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageView" destination="Ag3-7v-KsM" id="jtw-Tb-xUk"/>
+                        <outlet property="previewView" destination="t1G-vo-4wU" id="pw6-KP-uZp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9v-86-ka3" userLabel="First Responder" sceneMemberID="firstResponder"/>

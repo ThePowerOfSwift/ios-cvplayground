@@ -10,6 +10,6 @@
 
 @interface AWVideoCameraCtrl : UIViewController
 
-@property (weak) IBOutlet UIImageView *imageView;
+@property (weak) IBOutlet UIView *previewView;
 
 @end
