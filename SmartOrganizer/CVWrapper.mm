@@ -49,7 +49,8 @@ static float targetRatio = 0.0;
 	//       to use circle() instead.
 	// drawKeypoints(grayMat, keypoints, srcMat, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
 	for (vector<KeyPoint>::iterator it = keypoints.begin(); it != keypoints.end(); it++) {
-		circle(srcMat, it->pt, it->size * 0.5, Scalar(255, 255, 0));
+		cout << "CVWrapper.findCornerMarkers: blob point: " << it->pt << "size: " << it->size * 0.5 << endl;
+		circle(srcMat, it->pt, it->size * 0.5, Scalar(0, 255, 0), -1);
 	}
 
 	return MatToUIImage(srcMat);
@@ -164,7 +165,6 @@ static float targetRatio = 0.0;
 
 		vector<vector<cv::Point>> contours;
 		findContours(bwMat, contours, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE);
-		cout << "CVWrapper.findLargestBlob: got " << contours.size() << " contours" << endl;
 
 		double maxArea = 0;
 		for (vector<vector<cv::Point>>::iterator it = contours.begin(); it != contours.end(); it++) {
@@ -284,7 +284,7 @@ static float targetRatio = 0.0;
 	}
 
 	cout << "Creating warpped Mat of size " << width << "x" << height << endl;
-	Mat quad = Mat::zeros(height, width, CV_8UC3);
+	Mat quad = Mat::zeros(width, height, CV_8UC3);
 
 	vector<Point2f> quad_pts;
 	quad_pts.push_back(Point2f(quad.cols, 0));
