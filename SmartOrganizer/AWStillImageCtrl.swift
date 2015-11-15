@@ -17,18 +17,30 @@ class AWStillImageCtrl: UIViewController {
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 
-		guard let image = UIImage(named: "test4") else {
+		guard let image = UIImage(named: "test6") else {
 			print("Could not load image")
 			return
 		}
 
-		imageView?.image = CVWrapper.debugDrawLargestBlob(image, edges: 4);
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)*5), dispatch_get_main_queue(), {
-			do {
-				self.imageView?.image = try CVWrapper.warpLargestRectangle(image)
-			} catch let e {
-				print("CVWrapper.warpLargestRectangle error: \(e)")
-			}
-		})
+		do {
+			imageView?.image = try CVWrapper.debugDrawLargestBlob(image, edges: 4);
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)*3), dispatch_get_main_queue(), {
+				do {
+					self.imageView?.image = try CVWrapper.findPaper(image)
+
+					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)*3), dispatch_get_main_queue(), {
+						do {
+							self.imageView?.image = try CVWrapper.findCornerMarkers(self.imageView?.image!)
+						} catch let e {
+							print("CVWrapper.findPaper error: \(e)")
+						}
+					})
+				} catch let e {
+					print("CVWrapper.findPaper error: \(e)")
+				}
+			})
+		} catch let e {
+			print("CVWrapper.findPaper error: \(e)")
+		}
 	}
 }

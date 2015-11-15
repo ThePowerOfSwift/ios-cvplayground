@@ -60,9 +60,9 @@
 
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		NSError *error = nil;
-		UIImage *warped = [CVWrapper warpLargestRectangle:image error:&error];
+		UIImage *warped = [CVWrapper findPaper:image error:&error];
 		if (error != nil) {
-			NSLog(@"CVWrapper.warpLargestRectangle error: %@", error);
+			NSLog(@"CVWrapper.findPaper error: %@", error);
 			dispatch_async(dispatch_get_main_queue(), ^{
 				[photoCamera start];
 				[indicator stopAnimating];

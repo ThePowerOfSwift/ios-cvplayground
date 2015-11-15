@@ -19,31 +19,51 @@ static float targetRatio = 0.0;
 
 #pragma mark - Public Functions
 
-+ (UIImage *)warpLargestRectangle:(UIImage *)src error:(NSError **)errorPtr {
++ (UIImage *)findPaper:(UIImage *)src error:(NSError **)errorPtr {
 	Mat srcMat;
-	[CVWrapper UIImageToMat:src mat:srcMat alphaExist:NO];
-	if (srcMat.empty()) {
-		*errorPtr = [NSError errorWithDomain:@"CVWrapper"
-										code:CVWrapperErrorEmptyImage
-									userInfo:@{NSLocalizedDescriptionKey: @"Input is empty"}];
+	if (![CVWrapper UIImageToMat:src mat:srcMat alphaExist:NO error:errorPtr]) {
 		return nil;
 	}
+	cout << "CVWrapper.findPaper: input image " << srcMat.cols << "x" << srcMat.rows << endl;
 
 	vector<cv::Point> corners;
-	[CVWrapper findLargestBlob:srcMat edges:4 output:corners];
+	[CVWrapper findLargestBlob:srcMat edges:4 minArea:(srcMat.rows * srcMat.cols * 0.4) output:corners];
 	return [CVWrapper warpPerspective:srcMat corners:corners error:errorPtr];
 }
 
-+ (UIImage *)debugDrawLargestBlob:(UIImage *)src edges:(NSUInteger)edges {
++ (UIImage *)findCornerMarkers:(UIImage *)src error:(NSError **)errorPtr {
 	Mat srcMat;
-	[CVWrapper UIImageToMat:src mat:srcMat alphaExist:NO];
-	if (srcMat.empty()) {
-		cout << "Input image is invalid!" << endl;
+	if (![CVWrapper UIImageToMat:src mat:srcMat alphaExist:NO error:errorPtr]) {
 		return nil;
 	}
+	cout << "CVWrapper.findCornerMarkers: input image " << srcMat.cols << "x" << srcMat.rows << endl;
+
+	Mat grayMat;
+	cvtColor(srcMat, grayMat, CV_BGR2GRAY);
+
+	SimpleBlobDetector detector;
+	vector<KeyPoint> keypoints;
+	detector.detect(grayMat, keypoints);
+
+	// NOTE: example uses drawKeypoints, but it does work on srcMat, so I'm going
+	//       to use circle() instead.
+	// drawKeypoints(grayMat, keypoints, srcMat, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+	for (vector<KeyPoint>::iterator it = keypoints.begin(); it != keypoints.end(); it++) {
+		circle(srcMat, it->pt, it->size * 0.5, Scalar(255, 255, 0));
+	}
+
+	return MatToUIImage(srcMat);
+}
+
++ (UIImage *)debugDrawLargestBlob:(UIImage *)src edges:(NSUInteger)edges error:(NSError **)errorPtr {
+	Mat srcMat;
+	if (![CVWrapper UIImageToMat:src mat:srcMat alphaExist:NO error:errorPtr]) {
+		return nil;
+	}
+	cout << "CVWrapper.debugDrawLargestBlob: input image " << srcMat.cols << "x" << srcMat.rows << endl;
 
 	vector<cv::Point> corners;
-	[CVWrapper findLargestBlob:srcMat edges:edges output:corners];
+	[CVWrapper findLargestBlob:srcMat edges:edges minArea:(srcMat.rows * srcMat.cols * 0.4) output:corners];
 
 	vector<vector<cv::Point>> contours;
 	contours.push_back(corners);
@@ -53,18 +73,16 @@ static float targetRatio = 0.0;
 
 + (void)debugDrawLargestBlobOnMat:(Mat &)srcMat edges:(NSUInteger)edges {
 	vector<cv::Point> corners;
-	[CVWrapper findLargestBlob:srcMat edges:edges output:corners];
+	[CVWrapper findLargestBlob:srcMat edges:edges minArea:(srcMat.rows * srcMat.cols * 0.4)  output:corners];
 
 	vector<vector<cv::Point>> contours;
 	contours.push_back(corners);
 	drawContours(srcMat, contours, 0, Scalar(255, 0, 0));
 }
 
-+ (UIImage *)debugDrawBlobs:(UIImage *)src aspectRatio:(CGFloat)ratio {
++ (UIImage *)debugDrawBlobs:(UIImage *)src aspectRatio:(CGFloat)ratio error:(NSError **)errorPtr {
 	Mat srcMat;
-	[CVWrapper UIImageToMat:src mat:srcMat alphaExist:NO];
-	if (srcMat.empty()) {
-		cout << "Input image is invalid!" << endl;
+	if (![CVWrapper UIImageToMat:src mat:srcMat alphaExist:NO error:errorPtr]) {
 		return nil;
 	}
 
@@ -85,34 +103,39 @@ static float targetRatio = 0.0;
 
 #pragma mark - Private Utilities
 
-+ (void)UIImageToMat:(UIImage *)image mat:(cv::Mat &)m alphaExist:(BOOL)alphaExist {
+/*
+ * NOTE: OpenCV provides UIImageToMat() but turns out that it crashes for some unknown
+ *       conditions. Reimplementing the same function here does not crash. Yet,
+ *       I don't know why.
+ */
++ (BOOL)UIImageToMat:(UIImage *)image mat:(cv::Mat &)m alphaExist:(BOOL)alphaExist error:(NSError **)errorPtr {
 	CGColorSpaceRef colorSpace = CGImageGetColorSpace(image.CGImage);
 	CGFloat cols = image.size.width, rows = image.size.height;
 	CGContextRef contextRef;
 	CGBitmapInfo bitmapInfo = kCGImageAlphaPremultipliedLast;
-	if (CGColorSpaceGetModel(colorSpace) == 0)
-	{
+	if (CGColorSpaceGetModel(colorSpace) == 0) {
 		m.create(rows, cols, CV_8UC1);
 		bitmapInfo = kCGImageAlphaNone;
 		if (!alphaExist)
 			bitmapInfo = kCGImageAlphaNone;
-		contextRef = CGBitmapContextCreate(m.data, m.cols, m.rows, 8,
-										   m.step[0], colorSpace,
-										   bitmapInfo);
-	}
-	else
-	{
+		contextRef = CGBitmapContextCreate(m.data, m.cols, m.rows, 8, m.step[0], colorSpace, bitmapInfo);
+	} else {
 		m.create(rows, cols, CV_8UC4); // 8 bits per component, 4 channels
 		if (!alphaExist)
-			bitmapInfo = kCGImageAlphaNoneSkipLast |
-			kCGBitmapByteOrderDefault;
-		contextRef = CGBitmapContextCreate(m.data, m.cols, m.rows, 8,
-										   m.step[0], colorSpace,
-										   bitmapInfo);
+			bitmapInfo = kCGImageAlphaNoneSkipLast | kCGBitmapByteOrderDefault;
+		contextRef = CGBitmapContextCreate(m.data, m.cols, m.rows, 8, m.step[0], colorSpace, bitmapInfo);
 	}
-	CGContextDrawImage(contextRef, CGRectMake(0, 0, cols, rows),
-					   image.CGImage);
+	CGContextDrawImage(contextRef, CGRectMake(0, 0, cols, rows), image.CGImage);
 	CGContextRelease(contextRef);
+
+	if (m.empty()) {
+		*errorPtr = [NSError errorWithDomain:@"CVWrapper"
+										code:CVWrapperErrorEmptyImage
+									userInfo:@{NSLocalizedDescriptionKey: @"Input is empty"}];
+		return NO;
+	}
+
+	return YES;
 }
 
 #pragma mark - OpenCV Algorithms
@@ -123,28 +146,44 @@ static float targetRatio = 0.0;
  * @param largest Allocated vector of cv::Point, needs to be initially cleared
  *                so this function can operate properly.
  */
-+ (void)findLargestBlob:(Mat &)srcMat edges:(NSInteger)edges output:(vector<cv::Point> &)largest {
-	Mat bw;
-	cvtColor(srcMat, bw, CV_BGR2GRAY);
-	blur(bw, bw, cv::Size(3, 3));
-	Canny(bw, bw, 50, 200, 3);
++ (void)findLargestBlob:(Mat &)srcMat edges:(NSInteger)edges minArea:(double)minArea output:(vector<cv::Point> &)largest {
+	Mat grayMat;
+	cvtColor(srcMat, grayMat, CV_BGR2GRAY);
+	blur(grayMat, grayMat, cv::Size(3, 3));
 
-	vector<vector<cv::Point>> contours;
-	findContours(bw, contours, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE);
+	for (float lowerBound = 220; lowerBound >= 50; lowerBound -= 10) {
+		cout << "CVWrapper.findLargestBlob: iterating threshold @" << lowerBound << endl;
 
-	double maxArea = 0;
-	for (vector<vector<cv::Point>>::iterator it = contours.begin(); it != contours.end(); it++) {
-		double area = contourArea(*it);
-		if (area > 500) {
-			double peri = arcLength(*it, true);
-			vector<cv::Point> approx;
-			approxPolyDP(*it, approx, 0.02*peri, true);
-			if (area > maxArea && approx.size() == edges) {
-				// Credit: http://stackoverflow.com/questions/2551775/c-appending-a-vector-to-a-vector
-				largest.clear();
-				largest.insert(end(largest), begin(approx), end(approx));
-				maxArea = area;
+		Mat bwMat;
+		// NOTE: for some conditions, threshold works better than canny
+		//Canny(grayMat, bwMat, 40, 120, 3);
+		threshold(grayMat, bwMat, lowerBound, 255, CV_THRESH_BINARY);
+
+		// NOTE: uncomment this code for canny/threshold debugging
+		//bwMat.copyTo(srcMat);
+
+		vector<vector<cv::Point>> contours;
+		findContours(bwMat, contours, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE);
+		cout << "CVWrapper.findLargestBlob: got " << contours.size() << " contours" << endl;
+
+		double maxArea = 0;
+		for (vector<vector<cv::Point>>::iterator it = contours.begin(); it != contours.end(); it++) {
+			double area = contourArea(*it);
+			if (area >= minArea) {
+				cout << "CVWrapper.findLargestBlob: found large contour of size " << area << endl;
+				double peri = arcLength(*it, true);
+				vector<cv::Point> approx;
+				approxPolyDP(*it, approx, 0.02*peri, true);
+				if (area > maxArea && approx.size() == edges) {
+					// Credit: http://stackoverflow.com/questions/2551775/c-appending-a-vector-to-a-vector
+					largest.clear();
+					largest.insert(end(largest), begin(approx), end(approx));
+					maxArea = area;
+				}
 			}
+		}
+		if (maxArea > 0) {
+			break;
 		}
 	}
 }
@@ -208,7 +247,7 @@ static float targetRatio = 0.0;
 		return nil;
 	}
 
-	// HACK: Too bad, seems that all functions work well with cv::Point except
+	// HACK: Seems that all functions work well with cv::Point except
 	// getPerspectiveTransform that needs cv::Point2f
 	vector<Point2f> corners2f;
 	for (vector<cv::Point>::iterator it = corners.begin(); it != corners.end(); it++) {
@@ -231,9 +270,12 @@ static float targetRatio = 0.0;
 	float width = (dst[0] + dst[2]) * 0.5;
 	float height = (dst[1] + dst[3]) * 0.5;
 
-	cout << corners[0].x << "x" << corners[0].y << "," << corners[1].x << "x" << corners[1].y << "," << corners[2].x << "x" << corners[2].y << "," << corners[3].x << "x" << corners[3].y << endl;
-	cout << dst[0] << "," << dst[1] << "," << dst[2] << "," << dst[3] << endl;
-	cout << width << "x" << height << endl;
+	cout << "CVWrapper.warpPerspective: corners "
+			"TR " << corners[0].x << "x" << corners[0].y << ", "
+			"TL " << corners[1].x << "x" << corners[1].y << ", "
+			"BL " << corners[2].x << "x" << corners[2].y << ", "
+			"BR " << corners[3].x << "x" << corners[3].y << endl;
+	cout << "CVWrapper.warpPerspective: average rectangle size " << width << "x" << height << endl;
 
 	if (targetRatio > 0) {
 		double peri = arcLength(corners, true);
@@ -242,7 +284,7 @@ static float targetRatio = 0.0;
 	}
 
 	cout << "Creating warpped Mat of size " << width << "x" << height << endl;
-	Mat quad = Mat::zeros(width, height, CV_8UC3);
+	Mat quad = Mat::zeros(height, width, CV_8UC3);
 
 	vector<Point2f> quad_pts;
 	quad_pts.push_back(Point2f(quad.cols, 0));

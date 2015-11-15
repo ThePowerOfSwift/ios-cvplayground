@@ -19,11 +19,11 @@ typedef NS_ENUM(NSInteger, CVWrapperError) {
 
 @interface CVWrapper : NSObject
 
-+ (UIImage *)warpLargestRectangle:(UIImage *)src error:(NSError **)errorPtr;
++ (UIImage *)findPaper:(UIImage *)src error:(NSError **)errorPtr;
++ (UIImage *)findCornerMarkers:(UIImage *)src error:(NSError **)errorPtr;
 
-+ (UIImage *)debugDrawLargestBlob:(UIImage *)src edges:(NSUInteger)edges;
-
-+ (UIImage *)debugDrawBlobs:(UIImage *)src aspectRatio:(CGFloat)ratio;
++ (UIImage *)debugDrawLargestBlob:(UIImage *)src edges:(NSUInteger)edges error:(NSError **)errorPtr;
++ (UIImage *)debugDrawBlobs:(UIImage *)src aspectRatio:(CGFloat)ratio error:(NSError **)errorPtr;
 
 #ifdef __cplusplus
 + (void)debugDrawLargestBlobOnMat:(cv::Mat &)srcMat edges:(NSUInteger)edges;
