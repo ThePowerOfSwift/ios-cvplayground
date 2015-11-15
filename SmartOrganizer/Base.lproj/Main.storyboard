@@ -81,7 +81,7 @@
                             <constraint firstItem="RBW-ZR-y8o" firstAttribute="centerX" secondItem="7nZ-2O-Ro4" secondAttribute="centerX" id="vN7-Ze-znw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="llE-CL-zka"/>
+                    <navigationItem key="navigationItem" title="Computer Vision" id="llE-CL-zka"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nr9-g0-KUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

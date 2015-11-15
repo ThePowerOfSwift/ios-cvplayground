@@ -67,6 +67,44 @@ static float targetRatio = 0.0;
 	return MatToUIImage(srcMat);
 }
 
++ (UIImage *)find7Segments:(UIImage *)src error:(NSError **)errorPtr {
+	Mat srcMat;
+	if (![CVWrapper UIImageToMat:src mat:srcMat alphaExist:NO error:errorPtr]) {
+		return nil;
+	}
+	cout << "CVWrapper.findCornerMarkers: input image " << srcMat.cols << "x" << srcMat.rows << endl;
+
+	Mat grayMat;
+	cvtColor(srcMat, grayMat, CV_BGR2GRAY);
+	blur(grayMat, grayMat, cv::Size(3, 3));
+
+	vector<KeyPoint> keypoints;
+
+	int width = srcMat.cols * 0.03;
+	int size = width * width;
+
+	SimpleBlobDetector::Params params;
+	params.minRepeatability = 0;
+	params.minArea = size * 0.8;
+	params.maxArea = size * 1.2;
+
+	SimpleBlobDetector detector(params);
+	detector.detect(grayMat, keypoints);
+
+	[CVWrapper debugContour:srcMat];
+
+	// NOTE: example uses drawKeypoints, but it does work on srcMat, so I'm going
+	//       to use circle() instead.
+	// drawKeypoints(grayMat, keypoints, srcMat, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+	for (vector<KeyPoint>::iterator it = keypoints.begin(); it != keypoints.end(); it++) {
+		cout << "CVWrapper.findCornerMarkers: blob point: " << it->pt << " size: " << it->size * 0.5 << endl;
+		//circle(srcMat, it->pt, it->size * 0.5, Scalar(0, 255, 0), CV_FILLED);
+		circle(srcMat, it->pt, it->size * 1.5, Scalar(0, 255, 0), 2);
+	}
+
+	return MatToUIImage(srcMat);
+}
+
 + (UIImage *)debugDrawLargestBlob:(UIImage *)src edges:(NSUInteger)edges error:(NSError **)errorPtr {
 	Mat srcMat;
 	if (![CVWrapper UIImageToMat:src mat:srcMat alphaExist:NO error:errorPtr]) {
