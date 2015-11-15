@@ -24,11 +24,11 @@ class AWStillImageCtrl: UIViewController {
 
 		do {
 			imageView?.image = try CVWrapper.debugDrawLargestBlob(image, edges: 4);
-			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)*3), dispatch_get_main_queue(), {
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)*2), dispatch_get_main_queue(), {
 				do {
 					self.imageView?.image = try CVWrapper.findPaper(image)
 
-					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)*3), dispatch_get_main_queue(), {
+					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC)*2), dispatch_get_main_queue(), {
 						do {
 							self.imageView?.image = try CVWrapper.findCornerMarkers(self.imageView?.image!)
 						} catch let e {

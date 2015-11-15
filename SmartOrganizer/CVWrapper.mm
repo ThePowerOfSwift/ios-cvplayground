@@ -40,11 +40,18 @@ static float targetRatio = 0.0;
 
 	Mat grayMat;
 	cvtColor(srcMat, grayMat, CV_BGR2GRAY);
+	blur(grayMat, grayMat, cv::Size(3, 3));
 
 	vector<KeyPoint> keypoints;
 
+	int width = srcMat.cols * 0.03;
+	int size = width * width;
+
 	SimpleBlobDetector::Params params;
-	params.minArea = 20;
+	params.minRepeatability = 0;
+	params.minArea = size * 0.8;
+	params.maxArea = size * 1.2;
+
 	SimpleBlobDetector detector(params);
 	detector.detect(grayMat, keypoints);
 
@@ -52,8 +59,9 @@ static float targetRatio = 0.0;
 	//       to use circle() instead.
 	// drawKeypoints(grayMat, keypoints, srcMat, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
 	for (vector<KeyPoint>::iterator it = keypoints.begin(); it != keypoints.end(); it++) {
-		cout << "CVWrapper.findCornerMarkers: blob point: " << it->pt << "size: " << it->size * 0.5 << endl;
-		circle(srcMat, it->pt, it->size * 0.5, Scalar(0, 255, 0), -1);
+		cout << "CVWrapper.findCornerMarkers: blob point: " << it->pt << " size: " << it->size * 0.5 << endl;
+		//circle(srcMat, it->pt, it->size * 0.5, Scalar(0, 255, 0), CV_FILLED);
+		circle(srcMat, it->pt, it->size * 1.5, Scalar(0, 255, 0), 2);
 	}
 
 	return MatToUIImage(srcMat);
@@ -120,13 +128,15 @@ static float targetRatio = 0.0;
 	if (CGColorSpaceGetModel(colorSpace) == 0) {
 		m.create(rows, cols, CV_8UC1);
 		bitmapInfo = kCGImageAlphaNone;
-		if (!alphaExist)
+		if (!alphaExist) {
 			bitmapInfo = kCGImageAlphaNone;
+		}
 		contextRef = CGBitmapContextCreate(m.data, m.cols, m.rows, 8, m.step[0], colorSpace, bitmapInfo);
 	} else {
 		m.create(rows, cols, CV_8UC4); // 8 bits per component, 4 channels
-		if (!alphaExist)
+		if (!alphaExist) {
 			bitmapInfo = kCGImageAlphaNoneSkipLast | kCGBitmapByteOrderDefault;
+		}
 		contextRef = CGBitmapContextCreate(m.data, m.cols, m.rows, 8, m.step[0], colorSpace, bitmapInfo);
 	}
 	CGContextDrawImage(contextRef, CGRectMake(0, 0, cols, rows), image.CGImage);
@@ -155,7 +165,7 @@ static float targetRatio = 0.0;
 	cvtColor(srcMat, grayMat, CV_BGR2GRAY);
 	blur(grayMat, grayMat, cv::Size(3, 3));
 
-	for (float lowerBound = 220/3; lowerBound >= 50; lowerBound -= 10) {
+	for (float lowerBound = 220; lowerBound >= 50; lowerBound -= 10) {
 		cout << "CVWrapper.findLargestBlob: iterating threshold @" << lowerBound << endl;
 
 		Mat bwMat;
@@ -238,6 +248,28 @@ static float targetRatio = 0.0;
 			contours.push_back(*it);
 		}
 	}
+}
+
++ (void)debugContour:(Mat &)srcMat {
+	Mat grayMat;
+	cvtColor(srcMat, grayMat, CV_BGR2GRAY);
+	blur(grayMat, grayMat, cv::Size(3, 3));
+	threshold(grayMat, grayMat, 210, 255, CV_THRESH_BINARY);
+
+	vector<vector<cv::Point>> contours;
+	findContours(grayMat, contours, RETR_LIST, CHAIN_APPROX_NONE);
+	for (vector<vector<cv::Point>>::iterator it = contours.begin(); it != contours.end();) {
+		double area = contourArea(*it);
+		if (10 <= area && area < 5000) {
+			it++;
+		} else {
+			it = contours.erase(it);
+		}
+	}
+	for (vector<vector<cv::Point>>::iterator it = contours.begin(); it != contours.end(); it++) {
+		cout << contourArea(*it) << endl;
+	}
+	drawContours(srcMat, contours, -1, Scalar(0, 0, 255), CV_FILLED);
 }
 
 #pragma mark - UIImage Output Functions
