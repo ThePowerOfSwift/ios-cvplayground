@@ -21,7 +21,6 @@ typedef NS_ENUM(NSInteger, CVWrapperError) {
 
 + (UIImage *)findPaper:(UIImage *)src error:(NSError **)errorPtr;
 + (UIImage *)findCornerMarkers:(UIImage *)src error:(NSError **)errorPtr;
-+ (UIImage *)find7Segments:(UIImage *)src error:(NSError **)errorPtr;
 
 + (UIImage *)debugDrawLargestBlob:(UIImage *)src edges:(NSUInteger)edges error:(NSError **)errorPtr;
 + (UIImage *)debugDrawBlobs:(UIImage *)src aspectRatio:(CGFloat)ratio error:(NSError **)errorPtr;
