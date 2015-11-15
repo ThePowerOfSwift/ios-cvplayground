@@ -41,8 +41,11 @@ static float targetRatio = 0.0;
 	Mat grayMat;
 	cvtColor(srcMat, grayMat, CV_BGR2GRAY);
 
-	SimpleBlobDetector detector;
 	vector<KeyPoint> keypoints;
+
+	SimpleBlobDetector::Params params;
+	params.minArea = 20;
+	SimpleBlobDetector detector(params);
 	detector.detect(grayMat, keypoints);
 
 	// NOTE: example uses drawKeypoints, but it does work on srcMat, so I'm going
