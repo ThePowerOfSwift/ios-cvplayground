@@ -27,7 +27,7 @@ static float targetRatio = 0.0;
 	cout << "CVWrapper.findPaper: input image " << srcMat.cols << "x" << srcMat.rows << endl;
 
 	vector<cv::Point> corners;
-	[CVWrapper findLargestBlob:srcMat edges:4 minArea:(srcMat.rows * srcMat.cols * 0.4) output:corners];
+	[CVWrapper findLargestBlob:srcMat edges:4 minArea:(srcMat.rows * srcMat.cols * 0.3) output:corners];
 	return [CVWrapper warpPerspective:srcMat corners:corners error:errorPtr];
 }
 
@@ -67,7 +67,7 @@ static float targetRatio = 0.0;
 	cout << "CVWrapper.debugDrawLargestBlob: input image " << srcMat.cols << "x" << srcMat.rows << endl;
 
 	vector<cv::Point> corners;
-	[CVWrapper findLargestBlob:srcMat edges:edges minArea:(srcMat.rows * srcMat.cols * 0.4) output:corners];
+	[CVWrapper findLargestBlob:srcMat edges:edges minArea:(srcMat.rows * srcMat.cols * 0.3) output:corners];
 
 	vector<vector<cv::Point>> contours;
 	contours.push_back(corners);
@@ -77,7 +77,7 @@ static float targetRatio = 0.0;
 
 + (void)debugDrawLargestBlobOnMat:(Mat &)srcMat edges:(NSUInteger)edges {
 	vector<cv::Point> corners;
-	[CVWrapper findLargestBlob:srcMat edges:edges minArea:(srcMat.rows * srcMat.cols * 0.4)  output:corners];
+	[CVWrapper findLargestBlob:srcMat edges:edges minArea:(srcMat.rows * srcMat.cols * 0.3)  output:corners];
 
 	vector<vector<cv::Point>> contours;
 	contours.push_back(corners);
@@ -155,12 +155,12 @@ static float targetRatio = 0.0;
 	cvtColor(srcMat, grayMat, CV_BGR2GRAY);
 	blur(grayMat, grayMat, cv::Size(3, 3));
 
-	for (float lowerBound = 220; lowerBound >= 50; lowerBound -= 10) {
+	for (float lowerBound = 220/3; lowerBound >= 50; lowerBound -= 10) {
 		cout << "CVWrapper.findLargestBlob: iterating threshold @" << lowerBound << endl;
 
 		Mat bwMat;
 		// NOTE: for some conditions, threshold works better than canny
-		//Canny(grayMat, bwMat, 40, 120, 3);
+		//Canny(grayMat, bwMat, lowerBound, lowerBound*3, 3);
 		threshold(grayMat, bwMat, lowerBound, 255, CV_THRESH_BINARY);
 
 		// NOTE: uncomment this code for canny/threshold debugging
@@ -250,8 +250,8 @@ static float targetRatio = 0.0;
 		return nil;
 	}
 
-	// HACK: Seems that all functions work well with cv::Point except
-	// getPerspectiveTransform that needs cv::Point2f
+	// HACK: All functions work well with cv::Point except getPerspectiveTransform
+	//       that needs cv::Point2f
 	vector<Point2f> corners2f;
 	for (vector<cv::Point>::iterator it = corners.begin(); it != corners.end(); it++) {
 		corners2f.push_back(Point2f(it->x, it->y));
@@ -287,7 +287,7 @@ static float targetRatio = 0.0;
 	}
 
 	cout << "Creating warpped Mat of size " << width << "x" << height << endl;
-	Mat quad = Mat::zeros(width, height, CV_8UC3);
+	Mat quad = Mat::zeros(height, width, CV_8UC3);
 
 	vector<Point2f> quad_pts;
 	quad_pts.push_back(Point2f(quad.cols, 0));

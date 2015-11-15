@@ -17,7 +17,7 @@ class AWStillImageCtrl: UIViewController {
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 
-		guard let image = UIImage(named: "test6") else {
+		guard let image = UIImage(named: "test7") else {
 			print("Could not load image")
 			return
 		}
