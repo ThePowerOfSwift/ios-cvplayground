@@ -3,7 +3,7 @@
 //  CVPlayground
 //
 //  Created by iwat on 11/5/15.
-//  Copyright © 2015 AuthorWise. All rights reserved.
+//  Copyright © 2015 Chaiwat Shuetrakoonpaiboon (iwat). All rights reserved.
 //
 
 import UIKit

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4369A8A91BEE3659000C8EFD /* AWHomeCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369A8A81BEE3659000C8EFD /* AWHomeCtrl.swift */; };
 		4375AA241BF2586800155A19 /* AWVideoCameraCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4375AA231BF2586800155A19 /* AWVideoCameraCtrl.mm */; };
-		4382C5D31BEFB66E000D4C58 /* CIDetectorControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382C5D21BEFB66E000D4C58 /* CIDetectorControllerTests.swift */; };
 		4382C5DC1BEFC442000D4C58 /* AWStillImageCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382C5DB1BEFC442000D4C58 /* AWStillImageCtrl.swift */; };
 		4382C5DF1BEFC4DB000D4C58 /* CVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4382C5DE1BEFC4DB000D4C58 /* CVWrapper.mm */; };
 		43B26C4E1BEBAEE500804460 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B26C4D1BEBAEE500804460 /* AppDelegate.swift */; };
@@ -22,24 +21,11 @@
 		61AEC604DE0B99A2C36D412F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 302415F952E70450653332DA /* libPods.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		4382C5D51BEFB66E000D4C58 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 43B26C421BEBAEE500804460 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 43B26C491BEBAEE500804460;
-			remoteInfo = CVPlayground;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		302415F952E70450653332DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4369A8A81BEE3659000C8EFD /* AWHomeCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWHomeCtrl.swift; sourceTree = "<group>"; };
 		4375AA221BF2586800155A19 /* AWVideoCameraCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWVideoCameraCtrl.h; sourceTree = "<group>"; };
 		4375AA231BF2586800155A19 /* AWVideoCameraCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AWVideoCameraCtrl.mm; sourceTree = "<group>"; };
-		4382C5D01BEFB66D000D4C58 /* CVPlaygroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CVPlaygroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4382C5D21BEFB66E000D4C58 /* CIDetectorControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDetectorControllerTests.swift; sourceTree = "<group>"; };
-		4382C5D41BEFB66E000D4C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4382C5DB1BEFC442000D4C58 /* AWStillImageCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWStillImageCtrl.swift; sourceTree = "<group>"; };
 		4382C5DD1BEFC4DB000D4C58 /* CVWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVWrapper.h; sourceTree = "<group>"; };
 		4382C5DE1BEFC4DB000D4C58 /* CVWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVWrapper.mm; sourceTree = "<group>"; };
@@ -60,13 +46,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4382C5CD1BEFB66D000D4C58 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		43B26C471BEBAEE500804460 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -95,20 +74,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4382C5D11BEFB66E000D4C58 /* CVPlaygroundTests */ = {
-			isa = PBXGroup;
-			children = (
-				4382C5D21BEFB66E000D4C58 /* CIDetectorControllerTests.swift */,
-				4382C5D41BEFB66E000D4C58 /* Info.plist */,
-			);
-			path = CVPlaygroundTests;
-			sourceTree = "<group>";
-		};
 		43B26C411BEBAEE500804460 = {
 			isa = PBXGroup;
 			children = (
 				43B26C4C1BEBAEE500804460 /* CVPlayground */,
-				4382C5D11BEFB66E000D4C58 /* CVPlaygroundTests */,
 				43B26C4B1BEBAEE500804460 /* Products */,
 				123855813435D6C6A8A29471 /* Pods */,
 				3FB076D64E7F9FF9A7C426AE /* Frameworks */,
@@ -119,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				43B26C4A1BEBAEE500804460 /* CVPlayground.app */,
-				4382C5D01BEFB66D000D4C58 /* CVPlaygroundTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,24 +119,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4382C5CF1BEFB66D000D4C58 /* CVPlaygroundTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4382C5D71BEFB66E000D4C58 /* Build configuration list for PBXNativeTarget "CVPlaygroundTests" */;
-			buildPhases = (
-				4382C5CC1BEFB66D000D4C58 /* Sources */,
-				4382C5CD1BEFB66D000D4C58 /* Frameworks */,
-				4382C5CE1BEFB66D000D4C58 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4382C5D61BEFB66E000D4C58 /* PBXTargetDependency */,
-			);
-			name = CVPlaygroundTests;
-			productName = CVPlaygroundTests;
-			productReference = 4382C5D01BEFB66D000D4C58 /* CVPlaygroundTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		43B26C491BEBAEE500804460 /* CVPlayground */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43B26C5C1BEBAEE500804460 /* Build configuration list for PBXNativeTarget "CVPlayground" */;
@@ -195,14 +145,11 @@
 		43B26C421BEBAEE500804460 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = IW;
 				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0710;
-				ORGANIZATIONNAME = AuthorWise;
+				ORGANIZATIONNAME = "Chaiwat Shuetrakoonpaiboon (iwat)";
 				TargetAttributes = {
-					4382C5CF1BEFB66D000D4C58 = {
-						CreatedOnToolsVersion = 7.1;
-						TestTargetID = 43B26C491BEBAEE500804460;
-					};
 					43B26C491BEBAEE500804460 = {
 						CreatedOnToolsVersion = 7.1;
 					};
@@ -222,19 +169,11 @@
 			projectRoot = "";
 			targets = (
 				43B26C491BEBAEE500804460 /* CVPlayground */,
-				4382C5CF1BEFB66D000D4C58 /* CVPlaygroundTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4382C5CE1BEFB66D000D4C58 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		43B26C481BEBAEE500804460 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -296,14 +235,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4382C5CC1BEFB66D000D4C58 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4382C5D31BEFB66E000D4C58 /* CIDetectorControllerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		43B26C461BEBAEE500804460 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -320,14 +251,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4382C5D61BEFB66E000D4C58 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 43B26C491BEBAEE500804460 /* CVPlayground */;
-			targetProxy = 4382C5D51BEFB66E000D4C58 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		43B26C511BEBAEE500804460 /* Main.storyboard */ = {
@@ -349,30 +272,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		4382C5D81BEFB66E000D4C58 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = CVPlaygroundTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = authorwise.CVPlaygroundTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CVPlayground.app/CVPlayground";
-			};
-			name = Debug;
-		};
-		4382C5D91BEFB66E000D4C58 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = CVPlaygroundTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = authorwise.CVPlaygroundTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CVPlayground.app/CVPlayground";
-			};
-			name = Release;
-		};
 		43B26C5A1BEBAEE500804460 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -498,15 +397,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4382C5D71BEFB66E000D4C58 /* Build configuration list for PBXNativeTarget "CVPlaygroundTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4382C5D81BEFB66E000D4C58 /* Debug */,
-				4382C5D91BEFB66E000D4C58 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		43B26C451BEBAEE500804460 /* Build configuration list for PBXProject "CVPlayground" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
