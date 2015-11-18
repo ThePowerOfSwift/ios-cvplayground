@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AWStillImageCtrl: UIViewController {
+class IWStillImageCtrl: UIViewController {
 
 	@IBOutlet weak var imageView: UIImageView?
 

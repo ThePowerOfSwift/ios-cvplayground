@@ -1,5 +1,5 @@
 //
-//  AWOpenCVCamera.h
+//  IWOpenCVCamera.h
 //
 //  Created by Pavlo Razumovkyi on  Jul 17, 2015.
 //  @see http://stackoverflow.com/a/31479032/185371
@@ -7,13 +7,13 @@
 
 #import <CoreGraphics/CoreGraphics.h>
 
-#import "AWOpenCVCamera.h"
+#import "IWOpenCVCamera.h"
 
-@implementation AWOpenCVCamera
+@implementation IWOpenCVCamera
 
 @dynamic delegate;
 
-#pragma mark - AWOpenCVCamera
+#pragma mark - IWOpenCVCamera
 
 - (void)takePicture {
 	if (cameraAvailable == NO) {

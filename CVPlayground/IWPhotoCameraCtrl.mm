@@ -1,5 +1,5 @@
 //
-//  AWPhotoCameraCtrl.m
+//  IWPhotoCameraCtrl.m
 //  CVPlayground
 //
 //  Created by iwat on 11/11/15.
@@ -10,17 +10,17 @@
 
 #import "CVWrapper.h"
 
-#import "AWOpenCVCamera.h"
-#import "AWPhotoCameraCtrl.h"
+#import "IWOpenCVCamera.h"
+#import "IWPhotoCameraCtrl.h"
 
-@interface AWPhotoCameraCtrl () <AWOpenCVCameraDelegate>
+@interface IWPhotoCameraCtrl () <IWOpenCVCameraDelegate>
 @end
 
-@implementation AWPhotoCameraCtrl {
-	AWOpenCVCamera *photoCamera;
+@implementation IWPhotoCameraCtrl {
+	IWOpenCVCamera *photoCamera;
 }
 
-#pragma mark - AWPhotoCameraCtrl
+#pragma mark - IWPhotoCameraCtrl
 
 - (IBAction)takePicture {
 	[photoCamera takePicture];
@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	photoCamera = [[AWOpenCVCamera alloc] initWithParentView:self.previewView];
+	photoCamera = [[IWOpenCVCamera alloc] initWithParentView:self.previewView];
 	photoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPresetPhoto;
 	photoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
 	photoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
@@ -44,9 +44,9 @@
 	[photoCamera start];
 }
 
-#pragma mark - AWOpenCVCameraDelegate
+#pragma mark - IWOpenCVCameraDelegate
 
-- (void)openCVCamera:(AWOpenCVCamera *)_photoCamera capturedImage:(UIImage *)image {
+- (void)openCVCamera:(IWOpenCVCamera *)_photoCamera capturedImage:(UIImage *)image {
 	if (photoCamera != _photoCamera) {
 		return;
 	}

@@ -1,5 +1,5 @@
 //
-//  AWVideoCameraCtrl.m
+//  IWVideoCameraCtrl.m
 //  CVPlayground
 //
 //  Created by iwat on 11/10/15.
@@ -10,12 +10,12 @@
 
 #import "CVWrapper.h"
 
-#import "AWVideoCameraCtrl.h"
+#import "IWVideoCameraCtrl.h"
 
-@interface AWVideoCameraCtrl () <CvVideoCameraDelegate>
+@interface IWVideoCameraCtrl () <CvVideoCameraDelegate>
 @end
 
-@implementation AWVideoCameraCtrl {
+@implementation IWVideoCameraCtrl {
 	CvVideoCamera *videoCamera;
 }
 

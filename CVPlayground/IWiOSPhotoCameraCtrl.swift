@@ -1,5 +1,5 @@
 //
-//  AWiOSPhotoCameraCtrl.swift
+//  IWiOSPhotoCameraCtrl.swift
 //  CVPlayground
 //
 //  Created by iwat on 11/11/15.
@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import ImageIO
 
-class AWiOSPhotoCameraCtrl: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class IWiOSPhotoCameraCtrl: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
 	@IBOutlet weak var previewView: UIView?
 
@@ -20,7 +20,7 @@ class AWiOSPhotoCameraCtrl: UIViewController, AVCaptureVideoDataOutputSampleBuff
 	private var captureVideoPreviewLayer: AVCaptureVideoPreviewLayer?
 	private var captureConnection: AVCaptureConnection?
 
-	// MARK: - AWiOSPhotoCameraCtrl
+	// MARK: - IWiOSPhotoCameraCtrl
 
 	@IBAction func takePicture() {
 		var optVideoConnection: AVCaptureConnection?
@@ -77,7 +77,7 @@ class AWiOSPhotoCameraCtrl: UIViewController, AVCaptureVideoDataOutputSampleBuff
 		super.viewDidLoad()
 
 		guard let previewView = previewView else {
-			print("AWiOSPhotoCameraCtrl.previewView was nil")
+			print("IWiOSPhotoCameraCtrl.previewView was nil")
 			return
 		}
 
@@ -99,7 +99,7 @@ class AWiOSPhotoCameraCtrl: UIViewController, AVCaptureVideoDataOutputSampleBuff
 		imageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
 		session.addOutput(imageOutput)
 
-		let videoOutputQueue = dispatch_queue_create("AWiOSPhotoCameraCtrl_videoDataOutput", DISPATCH_QUEUE_SERIAL)
+		let videoOutputQueue = dispatch_queue_create("IWiOSPhotoCameraCtrl_videoDataOutput", DISPATCH_QUEUE_SERIAL)
 
 		let videoOutput = AVCaptureVideoDataOutput()
 		videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey: NSNumber(unsignedInt: kCVPixelFormatType_32BGRA)]

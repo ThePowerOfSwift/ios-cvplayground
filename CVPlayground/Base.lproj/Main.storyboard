@@ -26,7 +26,7 @@
         <!--Menu-->
         <scene sceneID="nAc-s3-f9F">
             <objects>
-                <viewController title="Menu" id="QEH-LA-ATH" customClass="AWHomeCtrl" customModule="CVPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Menu" id="QEH-LA-ATH" customClass="IWHomeCtrl" customModule="CVPlayground" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k87-mx-N5d"/>
                         <viewControllerLayoutGuide type="bottom" id="9Gi-AD-ZYz"/>
@@ -90,7 +90,7 @@
         <!--Still Image-->
         <scene sceneID="2wq-oL-vf4">
             <objects>
-                <viewController title="Still Image" id="R53-1R-WN1" customClass="AWStillImageCtrl" customModule="CVPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Still Image" id="R53-1R-WN1" customClass="IWStillImageCtrl" customModule="CVPlayground" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HW4-6s-FRd"/>
                         <viewControllerLayoutGuide type="bottom" id="Mjp-x5-uIX"/>
@@ -124,7 +124,7 @@
         <!--Video Camera-->
         <scene sceneID="Cw9-EW-Htg">
             <objects>
-                <viewController title="Video Camera" id="EeX-tt-hf9" customClass="AWVideoCameraCtrl" sceneMemberID="viewController">
+                <viewController title="Video Camera" id="EeX-tt-hf9" customClass="IWVideoCameraCtrl" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kbc-3K-auH"/>
                         <viewControllerLayoutGuide type="bottom" id="qVR-UY-1z6"/>
@@ -159,7 +159,7 @@
         <!--Photo Camera-->
         <scene sceneID="uDu-3m-A0f">
             <objects>
-                <viewController title="Photo Camera" id="ZIj-QW-yMz" customClass="AWPhotoCameraCtrl" sceneMemberID="viewController">
+                <viewController title="Photo Camera" id="ZIj-QW-yMz" customClass="IWPhotoCameraCtrl" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kkb-WX-hv8"/>
                         <viewControllerLayoutGuide type="bottom" id="2eq-RU-GlB"/>
@@ -201,7 +201,7 @@
         <!--iOS Photo-->
         <scene sceneID="hS3-0h-hM1">
             <objects>
-                <viewController title="iOS Photo" id="VUS-E9-3pd" customClass="AWiOSPhotoCameraCtrl" customModule="CVPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="iOS Photo" id="VUS-E9-3pd" customClass="IWiOSPhotoCameraCtrl" customModule="CVPlayground" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QQq-qo-ZdA"/>
                         <viewControllerLayoutGuide type="bottom" id="u6x-9C-GYY"/>

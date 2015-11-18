@@ -1,5 +1,5 @@
 //
-//  HomeController.swift
+//  IWHomeCtrl.swift
 //  CVPlayground
 //
 //  Created by iwat on 11/7/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AWHomeCtrl: UIViewController {
+class IWHomeCtrl: UIViewController {
 
 	// MARK: - UIViewController
 

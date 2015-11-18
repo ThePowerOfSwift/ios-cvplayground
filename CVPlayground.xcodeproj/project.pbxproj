@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4369A8A91BEE3659000C8EFD /* AWHomeCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369A8A81BEE3659000C8EFD /* AWHomeCtrl.swift */; };
-		4375AA241BF2586800155A19 /* AWVideoCameraCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4375AA231BF2586800155A19 /* AWVideoCameraCtrl.mm */; };
-		4382C5DC1BEFC442000D4C58 /* AWStillImageCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382C5DB1BEFC442000D4C58 /* AWStillImageCtrl.swift */; };
+		4369A8A91BEE3659000C8EFD /* IWHomeCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369A8A81BEE3659000C8EFD /* IWHomeCtrl.swift */; };
+		4375AA241BF2586800155A19 /* IWVideoCameraCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4375AA231BF2586800155A19 /* IWVideoCameraCtrl.mm */; };
+		4382C5DC1BEFC442000D4C58 /* IWStillImageCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382C5DB1BEFC442000D4C58 /* IWStillImageCtrl.swift */; };
 		4382C5DF1BEFC4DB000D4C58 /* CVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4382C5DE1BEFC4DB000D4C58 /* CVWrapper.mm */; };
 		43B26C4E1BEBAEE500804460 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B26C4D1BEBAEE500804460 /* AppDelegate.swift */; };
 		43B26C531BEBAEE500804460 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B26C511BEBAEE500804460 /* Main.storyboard */; };
 		43B26C551BEBAEE500804460 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B26C541BEBAEE500804460 /* Assets.xcassets */; };
 		43B26C581BEBAEE500804460 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B26C561BEBAEE500804460 /* LaunchScreen.storyboard */; };
-		43D132781BF38EC700863FD6 /* AWPhotoCameraCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43D132771BF38EC700863FD6 /* AWPhotoCameraCtrl.mm */; };
-		43D1327B1BF399B700863FD6 /* AWOpenCVCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43D1327A1BF399B700863FD6 /* AWOpenCVCamera.mm */; };
-		43D1327D1BF3AA0A00863FD6 /* AWiOSPhotoCameraCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D1327C1BF3AA0A00863FD6 /* AWiOSPhotoCameraCtrl.swift */; };
+		43D132781BF38EC700863FD6 /* IWPhotoCameraCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43D132771BF38EC700863FD6 /* IWPhotoCameraCtrl.mm */; };
+		43D1327B1BF399B700863FD6 /* IWOpenCVCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43D1327A1BF399B700863FD6 /* IWOpenCVCamera.mm */; };
+		43D1327D1BF3AA0A00863FD6 /* IWiOSPhotoCameraCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D1327C1BF3AA0A00863FD6 /* IWiOSPhotoCameraCtrl.swift */; };
 		61AEC604DE0B99A2C36D412F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 302415F952E70450653332DA /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		302415F952E70450653332DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		4369A8A81BEE3659000C8EFD /* AWHomeCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWHomeCtrl.swift; sourceTree = "<group>"; };
-		4375AA221BF2586800155A19 /* AWVideoCameraCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWVideoCameraCtrl.h; sourceTree = "<group>"; };
-		4375AA231BF2586800155A19 /* AWVideoCameraCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AWVideoCameraCtrl.mm; sourceTree = "<group>"; };
-		4382C5DB1BEFC442000D4C58 /* AWStillImageCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWStillImageCtrl.swift; sourceTree = "<group>"; };
+		4369A8A81BEE3659000C8EFD /* IWHomeCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IWHomeCtrl.swift; sourceTree = "<group>"; };
+		4375AA221BF2586800155A19 /* IWVideoCameraCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWVideoCameraCtrl.h; sourceTree = "<group>"; };
+		4375AA231BF2586800155A19 /* IWVideoCameraCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IWVideoCameraCtrl.mm; sourceTree = "<group>"; };
+		4382C5DB1BEFC442000D4C58 /* IWStillImageCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IWStillImageCtrl.swift; sourceTree = "<group>"; };
 		4382C5DD1BEFC4DB000D4C58 /* CVWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVWrapper.h; sourceTree = "<group>"; };
 		4382C5DE1BEFC4DB000D4C58 /* CVWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVWrapper.mm; sourceTree = "<group>"; };
 		43B26C4A1BEBAEE500804460 /* CVPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CVPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,11 +36,11 @@
 		43B26C571BEBAEE500804460 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43B26C591BEBAEE500804460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43B26C5F1BEBB04400804460 /* CVPlayground-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CVPlayground-Bridging-Header.h"; sourceTree = "<group>"; };
-		43D132761BF38EC700863FD6 /* AWPhotoCameraCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWPhotoCameraCtrl.h; sourceTree = "<group>"; };
-		43D132771BF38EC700863FD6 /* AWPhotoCameraCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AWPhotoCameraCtrl.mm; sourceTree = "<group>"; };
-		43D132791BF399B700863FD6 /* AWOpenCVCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWOpenCVCamera.h; sourceTree = "<group>"; };
-		43D1327A1BF399B700863FD6 /* AWOpenCVCamera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AWOpenCVCamera.mm; sourceTree = "<group>"; };
-		43D1327C1BF3AA0A00863FD6 /* AWiOSPhotoCameraCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWiOSPhotoCameraCtrl.swift; sourceTree = "<group>"; };
+		43D132761BF38EC700863FD6 /* IWPhotoCameraCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWPhotoCameraCtrl.h; sourceTree = "<group>"; };
+		43D132771BF38EC700863FD6 /* IWPhotoCameraCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IWPhotoCameraCtrl.mm; sourceTree = "<group>"; };
+		43D132791BF399B700863FD6 /* IWOpenCVCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWOpenCVCamera.h; sourceTree = "<group>"; };
+		43D1327A1BF399B700863FD6 /* IWOpenCVCamera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IWOpenCVCamera.mm; sourceTree = "<group>"; };
+		43D1327C1BF3AA0A00863FD6 /* IWiOSPhotoCameraCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IWiOSPhotoCameraCtrl.swift; sourceTree = "<group>"; };
 		5149A534AC079BDC672A32EB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8714C4A6A4F8D71D5488F1F8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,21 +97,21 @@
 			children = (
 				43B26C4D1BEBAEE500804460 /* AppDelegate.swift */,
 				43B26C541BEBAEE500804460 /* Assets.xcassets */,
-				4369A8A81BEE3659000C8EFD /* AWHomeCtrl.swift */,
-				43D1327C1BF3AA0A00863FD6 /* AWiOSPhotoCameraCtrl.swift */,
-				43D132761BF38EC700863FD6 /* AWPhotoCameraCtrl.h */,
-				43D132771BF38EC700863FD6 /* AWPhotoCameraCtrl.mm */,
-				4382C5DB1BEFC442000D4C58 /* AWStillImageCtrl.swift */,
-				4375AA221BF2586800155A19 /* AWVideoCameraCtrl.h */,
-				4375AA231BF2586800155A19 /* AWVideoCameraCtrl.mm */,
-				43D132791BF399B700863FD6 /* AWOpenCVCamera.h */,
-				43D1327A1BF399B700863FD6 /* AWOpenCVCamera.mm */,
+				43B26C5F1BEBB04400804460 /* CVPlayground-Bridging-Header.h */,
 				4382C5DD1BEFC4DB000D4C58 /* CVWrapper.h */,
 				4382C5DE1BEFC4DB000D4C58 /* CVWrapper.mm */,
 				43B26C591BEBAEE500804460 /* Info.plist */,
+				4369A8A81BEE3659000C8EFD /* IWHomeCtrl.swift */,
+				43D1327C1BF3AA0A00863FD6 /* IWiOSPhotoCameraCtrl.swift */,
+				43D132791BF399B700863FD6 /* IWOpenCVCamera.h */,
+				43D1327A1BF399B700863FD6 /* IWOpenCVCamera.mm */,
+				43D132761BF38EC700863FD6 /* IWPhotoCameraCtrl.h */,
+				43D132771BF38EC700863FD6 /* IWPhotoCameraCtrl.mm */,
+				4382C5DB1BEFC442000D4C58 /* IWStillImageCtrl.swift */,
+				4375AA221BF2586800155A19 /* IWVideoCameraCtrl.h */,
+				4375AA231BF2586800155A19 /* IWVideoCameraCtrl.mm */,
 				43B26C561BEBAEE500804460 /* LaunchScreen.storyboard */,
 				43B26C511BEBAEE500804460 /* Main.storyboard */,
-				43B26C5F1BEBB04400804460 /* CVPlayground-Bridging-Header.h */,
 			);
 			path = CVPlayground;
 			sourceTree = "<group>";
@@ -239,14 +239,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43D1327D1BF3AA0A00863FD6 /* AWiOSPhotoCameraCtrl.swift in Sources */,
-				43D1327B1BF399B700863FD6 /* AWOpenCVCamera.mm in Sources */,
-				4382C5DC1BEFC442000D4C58 /* AWStillImageCtrl.swift in Sources */,
-				4369A8A91BEE3659000C8EFD /* AWHomeCtrl.swift in Sources */,
+				43D1327D1BF3AA0A00863FD6 /* IWiOSPhotoCameraCtrl.swift in Sources */,
+				43D1327B1BF399B700863FD6 /* IWOpenCVCamera.mm in Sources */,
+				4382C5DC1BEFC442000D4C58 /* IWStillImageCtrl.swift in Sources */,
+				4369A8A91BEE3659000C8EFD /* IWHomeCtrl.swift in Sources */,
 				4382C5DF1BEFC4DB000D4C58 /* CVWrapper.mm in Sources */,
 				43B26C4E1BEBAEE500804460 /* AppDelegate.swift in Sources */,
-				43D132781BF38EC700863FD6 /* AWPhotoCameraCtrl.mm in Sources */,
-				4375AA241BF2586800155A19 /* AWVideoCameraCtrl.mm in Sources */,
+				43D132781BF38EC700863FD6 /* IWPhotoCameraCtrl.mm in Sources */,
+				4375AA241BF2586800155A19 /* IWVideoCameraCtrl.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
