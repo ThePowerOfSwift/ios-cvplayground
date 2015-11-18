@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HL3-1Z-EJ2">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home-->
+        <scene sceneID="7lc-TJ-s3H">
+            <objects>
+                <navigationController title="Home" id="HL3-1Z-EJ2" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dow-uv-LES">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="QEH-LA-ATH" kind="relationship" relationship="rootViewController" id="Oyj-Ka-DCk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vh5-cD-gcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1149" y="387"/>
+        </scene>
+        <!--Menu-->
+        <scene sceneID="nAc-s3-f9F">
+            <objects>
+                <viewController title="Menu" id="QEH-LA-ATH" customClass="AWHomeCtrl" customModule="CVPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k87-mx-N5d"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Gi-AD-ZYz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7nZ-2O-Ro4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxO-Kr-Z3J">
+                                <rect key="frame" x="234" y="72" width="133" height="30"/>
+                                <animations/>
+                                <state key="normal" title="OpenCV Still Image"/>
+                                <connections>
+                                    <segue destination="R53-1R-WN1" kind="show" id="hB0-37-bjD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5c-x4-FXN">
+                                <rect key="frame" x="243" y="110" width="115" height="30"/>
+                                <animations/>
+                                <state key="normal" title="OpenCV Camera"/>
+                                <connections>
+                                    <segue destination="EeX-tt-hf9" kind="show" id="JeA-ti-pLo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNZ-BH-05l">
+                                <rect key="frame" x="249" y="148" width="102" height="30"/>
+                                <animations/>
+                                <state key="normal" title="OpenCV Photo"/>
+                                <connections>
+                                    <segue destination="ZIj-QW-yMz" kind="show" id="xao-cd-0LM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBW-ZR-y8o">
+                                <rect key="frame" x="259" y="186" width="82" height="30"/>
+                                <animations/>
+                                <state key="normal" title="iOS Camera"/>
+                                <connections>
+                                    <segue destination="VUS-E9-3pd" kind="show" id="QY9-b9-wEc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nxO-Kr-Z3J" firstAttribute="centerX" secondItem="7nZ-2O-Ro4" secondAttribute="centerX" id="2D8-3V-4d8"/>
+                            <constraint firstItem="QNZ-BH-05l" firstAttribute="top" secondItem="g5c-x4-FXN" secondAttribute="bottom" constant="8" symbolic="YES" id="EcY-69-Zse"/>
+                            <constraint firstItem="QNZ-BH-05l" firstAttribute="centerX" secondItem="7nZ-2O-Ro4" secondAttribute="centerX" id="EnP-T5-avX"/>
+                            <constraint firstItem="RBW-ZR-y8o" firstAttribute="top" secondItem="QNZ-BH-05l" secondAttribute="bottom" constant="8" symbolic="YES" id="Rz3-Wv-p73"/>
+                            <constraint firstItem="g5c-x4-FXN" firstAttribute="centerX" secondItem="7nZ-2O-Ro4" secondAttribute="centerX" id="UsN-zf-AJx"/>
+                            <constraint firstItem="nxO-Kr-Z3J" firstAttribute="top" secondItem="k87-mx-N5d" secondAttribute="bottom" constant="8" symbolic="YES" id="mQK-G9-zdy"/>
+                            <constraint firstItem="g5c-x4-FXN" firstAttribute="top" secondItem="nxO-Kr-Z3J" secondAttribute="bottom" constant="8" symbolic="YES" id="rl6-9c-bHT"/>
+                            <constraint firstItem="RBW-ZR-y8o" firstAttribute="centerX" secondItem="7nZ-2O-Ro4" secondAttribute="centerX" id="vN7-Ze-znw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Computer Vision" id="llE-CL-zka"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nr9-g0-KUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-442" y="387"/>
+        </scene>
+        <!--Still Image-->
+        <scene sceneID="2wq-oL-vf4">
+            <objects>
+                <viewController title="Still Image" id="R53-1R-WN1" customClass="AWStillImageCtrl" customModule="CVPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HW4-6s-FRd"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mjp-x5-uIX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ODu-5x-Oa2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SZm-ro-Ps0">
+                                <rect key="frame" x="20" y="72" width="560" height="520"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SZm-ro-Ps0" firstAttribute="trailing" secondItem="ODu-5x-Oa2" secondAttribute="trailingMargin" id="DkD-pj-0kx"/>
+                            <constraint firstItem="SZm-ro-Ps0" firstAttribute="top" secondItem="HW4-6s-FRd" secondAttribute="bottom" constant="8" symbolic="YES" id="iVJ-ho-5Ou"/>
+                            <constraint firstItem="SZm-ro-Ps0" firstAttribute="leading" secondItem="ODu-5x-Oa2" secondAttribute="leadingMargin" id="sEs-mR-uWV"/>
+                            <constraint firstItem="Mjp-x5-uIX" firstAttribute="top" secondItem="SZm-ro-Ps0" secondAttribute="bottom" constant="8" symbolic="YES" id="x6b-ao-6rk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="SZm-ro-Ps0" id="V7x-oP-Dxu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PpO-vg-Qrl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="555" y="-428"/>
+        </scene>
+        <!--Video Camera-->
+        <scene sceneID="Cw9-EW-Htg">
+            <objects>
+                <viewController title="Video Camera" id="EeX-tt-hf9" customClass="AWVideoCameraCtrl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kbc-3K-auH"/>
+                        <viewControllerLayoutGuide type="bottom" id="qVR-UY-1z6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fts-3R-oRz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baX-dC-NFv">
+                                <rect key="frame" x="20" y="72" width="560" height="520"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qVR-UY-1z6" firstAttribute="top" secondItem="baX-dC-NFv" secondAttribute="bottom" constant="8" symbolic="YES" id="0de-YC-bBD"/>
+                            <constraint firstItem="baX-dC-NFv" firstAttribute="leading" secondItem="fts-3R-oRz" secondAttribute="leadingMargin" id="dgf-zQ-KTb"/>
+                            <constraint firstItem="baX-dC-NFv" firstAttribute="trailing" secondItem="fts-3R-oRz" secondAttribute="trailingMargin" id="dy2-lq-6LM"/>
+                            <constraint firstItem="baX-dC-NFv" firstAttribute="top" secondItem="Kbc-3K-auH" secondAttribute="bottom" constant="8" symbolic="YES" id="wYD-nI-Z8e"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="previewView" destination="baX-dC-NFv" id="UHx-7b-qDJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HaW-uM-lcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="555" y="322"/>
+        </scene>
+        <!--Photo Camera-->
+        <scene sceneID="uDu-3m-A0f">
+            <objects>
+                <viewController title="Photo Camera" id="ZIj-QW-yMz" customClass="AWPhotoCameraCtrl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kkb-WX-hv8"/>
+                        <viewControllerLayoutGuide type="bottom" id="2eq-RU-GlB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iG7-om-7cb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7U-6e-zOl">
+                                <rect key="frame" x="20" y="72" width="560" height="520"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k7U-6e-zOl" firstAttribute="top" secondItem="kkb-WX-hv8" secondAttribute="bottom" constant="8" symbolic="YES" id="cX4-mP-l7g"/>
+                            <constraint firstItem="2eq-RU-GlB" firstAttribute="top" secondItem="k7U-6e-zOl" secondAttribute="bottom" constant="8" symbolic="YES" id="d3W-d5-TQS"/>
+                            <constraint firstItem="k7U-6e-zOl" firstAttribute="leading" secondItem="iG7-om-7cb" secondAttribute="leadingMargin" id="sBp-2M-FWw"/>
+                            <constraint firstItem="k7U-6e-zOl" firstAttribute="trailing" secondItem="iG7-om-7cb" secondAttribute="trailingMargin" id="xb3-4m-HGk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Photo" id="Mhd-Mh-NAl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="9pw-mS-vLT">
+                            <connections>
+                                <action selector="takePicture" destination="ZIj-QW-yMz" id="aIb-fO-BUu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="previewView" destination="k7U-6e-zOl" id="wSj-7A-ha5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VfU-cy-yMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="555" y="1114"/>
+        </scene>
+        <!--iOS Photo-->
+        <scene sceneID="hS3-0h-hM1">
+            <objects>
+                <viewController title="iOS Photo" id="VUS-E9-3pd" customClass="AWiOSPhotoCameraCtrl" customModule="CVPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QQq-qo-ZdA"/>
+                        <viewControllerLayoutGuide type="bottom" id="u6x-9C-GYY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OzJ-sp-ttI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1G-vo-4wU">
+                                <rect key="frame" x="20" y="72" width="560" height="520"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="t1G-vo-4wU" firstAttribute="trailing" secondItem="OzJ-sp-ttI" secondAttribute="trailingMargin" id="2DU-oG-6aI"/>
+                            <constraint firstItem="t1G-vo-4wU" firstAttribute="leading" secondItem="OzJ-sp-ttI" secondAttribute="leadingMargin" id="4Bs-R8-fG1"/>
+                            <constraint firstItem="t1G-vo-4wU" firstAttribute="top" secondItem="QQq-qo-ZdA" secondAttribute="bottom" constant="8" symbolic="YES" id="5Wg-Fn-opg"/>
+                            <constraint firstItem="u6x-9C-GYY" firstAttribute="top" secondItem="t1G-vo-4wU" secondAttribute="bottom" constant="8" symbolic="YES" id="KjD-EU-Hvc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="iOS Photo" id="pHh-vs-E5x">
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="Jic-pJ-WtU">
+                            <connections>
+                                <action selector="takePicture" destination="VUS-E9-3pd" id="nZN-Xu-a9f"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="previewView" destination="t1G-vo-4wU" id="pw6-KP-uZp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u9v-86-ka3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-442" y="1274"/>
+        </scene>
+    </scenes>
+</document>
