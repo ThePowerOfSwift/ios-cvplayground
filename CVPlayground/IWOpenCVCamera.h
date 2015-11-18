@@ -1,8 +1,12 @@
 //
 //  IWOpenCVCamera.h
+//  CVPlayground
 //
-//  Created by Pavlo Razumovkyi on  Jul 17, 2015.
-//  @see http://stackoverflow.com/a/31479032/185371
+//  Created by iwat on 11/9/15.
+//  Copyright © 2015 Chaiwat Shuetrakoonpaiboon (iwat). All rights reserved.
+//
+//  Use of this source code is governed by MIT license that can be found in the
+//  LICENSE file.
 //
 
 #import <UIKit/UIKit.h>
